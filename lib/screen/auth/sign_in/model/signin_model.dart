@@ -9,7 +9,7 @@ class SignInModel {
 
   factory SignInModel.fromJson(Map<String, dynamic> json) {
     return SignInModel(
-      email: json["email"] ?? '',
+      email: json["email"] ?? '', //will be null when there is no value
       password: json["password"] ?? '',
     );
   }

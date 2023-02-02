@@ -22,7 +22,7 @@ class SignInController extends GetxController {
       email: emailController.text.trim(),
       password: passwordController.text.trim(),
     );
-    signinsservice.signinUser(Signinmodel).then(
+    signinsservice.signinCheckUser(Signinmodel).then(
       (value) {
         if (value != null) {
           storage.write(key: 'token', value: value.accessToken);

@@ -12,8 +12,8 @@ class SignInService {
   Dio dio = Dio();
   final apibaseurl = ApiBaseUrl();
   final apiendurl = ApiEndsUrl();
-  SignInModel? signInModel;
-  Future<SignInTokenModel?> signinUser(SignInModel model) async {
+
+  Future<SignInTokenModel?> signinCheckUser(SignInModel model) async {
     try {
       Response response = await dio.post(
         apibaseurl.baseUrl + apiendurl.signIn,
@@ -23,9 +23,9 @@ class SignInService {
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
         // ignore: non_constant_identifier_names
-        final SignInModel = SignInTokenModel.fromJson(response.data);
+        final signInModel = SignInTokenModel.fromJson(response.data);
         log(response.data.toString());
-        return SignInModel;
+        return signInModel;
       }
     } on DioError catch (e) {
       log(e.message);
