@@ -69,22 +69,11 @@ class ForgotPassword extends StatelessWidget {
                   ),
                   height: 50,
                   width: 350,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Center(
-                        child: Text(
-                          'CONTINUE',
-                          style: TextStyle(color: kwhitecolor, fontSize: 13),
-                        ),
-                      ),
-                      kwidthk,
-                      Icon(
-                        Icons.arrow_forward,
-                        color: kwhitecolor,
-                      ),
-                      kwidth,
-                    ],
+                  child: const Center(
+                    child: Text(
+                      'CONTINUE',
+                      style: TextStyle(color: kwhitecolor, fontSize: 13),
+                    ),
                   ),
                 ),
               ),

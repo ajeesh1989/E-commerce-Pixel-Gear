@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +7,7 @@ import 'package:pixel_gear/screen/auth/forgot_password/view/forgot_password.dart
 import 'package:pixel_gear/screen/auth/sign_in/controller/signincontroller.dart';
 import 'package:pixel_gear/screen/auth/sign_up/view/signup.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends GetView<SignInController> {
   SignIn({super.key});
 
   bool passwordVisible = false;
@@ -117,14 +118,15 @@ class SignIn extends StatelessWidget {
                         children: [
                           TextButton(
                             onPressed: () {
-                              Get.to(() => const ForgotPassword());
+                              Get.to(
+                                () => const ForgotPassword(),
+                              );
                             },
                             child: const Text(
-                              'forgot password?',
+                              'Forgot password?',
                               style: TextStyle(color: greycolor),
                             ),
                           ),
-                          kwidth
                         ],
                       ),
                       kheight80,
@@ -142,27 +144,18 @@ class SignIn extends StatelessWidget {
                           ),
                           height: 50,
                           width: 350,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: const [
-                              Center(
-                                child: Text(
-                                  'SIGN IN',
-                                  style: TextStyle(
-                                      color: kwhitecolor, fontSize: 13),
-                                ),
-                              ),
-                              kwidthk,
-                              Icon(
-                                Icons.arrow_forward,
-                                color: kwhitecolor,
-                              ),
-                              kwidth,
-                            ],
+                          child: const Center(
+                            child: Text(
+                              'SIGN IN',
+                              style:
+                                  TextStyle(color: kwhitecolor, fontSize: 13),
+                            ),
                           ),
                         ),
                       ),
-                      kheight30,
+                      kheight20,
+                      const Text('or'),
+                      kheight20,
                       Container(
                         decoration: BoxDecoration(
                           color: koffwhite,
@@ -171,14 +164,15 @@ class SignIn extends StatelessWidget {
                         height: 50,
                         width: 350,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
+                            kwidth,
                             Image.asset(
                               'lib/images/google-logo-9808.png',
                               height: 35,
                             ),
                             const SizedBox(
-                              width: 8,
+                              width: 55,
                             ),
                             const Text(
                               'Connect with Google',
@@ -188,28 +182,39 @@ class SignIn extends StatelessWidget {
                             const SizedBox(
                               width: 8,
                             ),
-                            const Icon(
-                              Icons.arrow_forward,
-                              color: kblackcolor,
+                          ],
+                        ),
+                      ),
+                      kHeight50,
+                      // Row(
+                      //   children: [
+                      //     kwidth80,
+                      //     const Text(
+                      //       'Dont have any account?',
+                      //       style: TextStyle(fontWeight: FontWeight.w500),
+                      //     ),
+                      //     TextButton(
+                      //         onPressed: () {
+                      //           Get.to(() => SignUp());
+                      //         },
+                      //         child: const Text('Sign Up'))
+                      //   ],
+                      // )
+                      RichText(
+                        text: TextSpan(
+                          text: "Dont have any account? ",
+                          style: const TextStyle(color: kblackcolor),
+                          children: <TextSpan>[
+                            TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Get.to(() => SignUp()),
+                              text: 'Sign up',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
                       ),
-                      kheight40,
-                      Row(
-                        children: [
-                          kwidth80,
-                          const Text(
-                            'Dont have any account?',
-                            style: TextStyle(fontWeight: FontWeight.w500),
-                          ),
-                          TextButton(
-                              onPressed: () {
-                                Get.to(() => SignUp());
-                              },
-                              child: const Text('Sign Up'))
-                        ],
-                      )
                     ],
                   ),
                 ),

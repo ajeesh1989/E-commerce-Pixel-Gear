@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/auth/sign_in/model/signin_model.dart';
 import 'package:pixel_gear/screen/auth/sign_in/service/signin_service/signin_service.dart';
-import 'package:pixel_gear/screen/home/view/home.dart';
+import 'package:pixel_gear/screen/BottomNavBar/View/bottomnav.dart';
 
 class SignInController extends GetxController {
   final TextEditingController emailController = TextEditingController();
@@ -27,7 +27,7 @@ class SignInController extends GetxController {
         if (value != null) {
           storage.write(key: 'token', value: value.accessToken);
           storage.write(key: 'refreshToken', value: value.refreshToken);
-          Get.offAll(() => const MyHome());
+          Get.offAll(() => BottomNavPage());
           disposeTextfield();
         }
       },
