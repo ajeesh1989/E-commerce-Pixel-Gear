@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pixel_gear/screen/auth/otp_screen/view/otp.dart';
+import 'package:pixel_gear/screen/auth/otpScreen/view/otp.dart';
 import '../../../../core/colors.dart';
 
 class ForgotPassword extends StatelessWidget {

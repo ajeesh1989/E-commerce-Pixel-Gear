@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
-import 'package:pixel_gear/screen/auth/otp_screen/service/otpService.dart';
-import 'package:pixel_gear/screen/auth/otp_screen/view/otp.dart';
+import 'package:pixel_gear/screen/auth/otpScreen/service/otpService.dart';
+import 'package:pixel_gear/screen/auth/otpScreen/view/otp.dart';
 import 'package:pixel_gear/screen/auth/sign_up/model/model.dart';
 import 'package:pixel_gear/screen/auth/sign_up/service/signUpService.dart';
 

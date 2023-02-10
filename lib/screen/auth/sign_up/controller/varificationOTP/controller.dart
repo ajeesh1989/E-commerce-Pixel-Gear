@@ -4,7 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/BottomNavBar/View/bottomnav.dart';
-import '../../../otp_screen/service/varifyOtp.dart';
+import '../../../otpScreen/service/varifyOtp.dart';
 import '../../model/model.dart';
 import '../../service/signUpService.dart';
 

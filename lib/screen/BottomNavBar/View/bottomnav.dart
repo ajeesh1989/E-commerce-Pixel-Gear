@@ -8,6 +8,7 @@ import 'package:pixel_gear/screen/Search/view/search.dart';
 import '../../home/view/home.dart';
 import '../Controller/controller.dart';
 
+// ignore: must_be_immutable
 class BottomNavPage extends GetView<BottomNavigationController> {
   BottomNavigationController navigationController =
       Get.put(BottomNavigationController());
@@ -15,7 +16,7 @@ class BottomNavPage extends GetView<BottomNavigationController> {
   BottomNavPage({super.key});
 
   final screen = [
-    const HomePage(),
+    HomePage(),
     const CategoryPage(),
     const CartPage(),
     const MyAccountPage(),

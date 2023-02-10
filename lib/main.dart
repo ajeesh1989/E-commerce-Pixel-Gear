@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/screen/BottomNavBar/View/bottomnav.dart';
 import 'package:pixel_gear/screen/SplashScreen/view/splash.dart';
+import 'package:pixel_gear/screen/auth/sign_in/view/signin.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
