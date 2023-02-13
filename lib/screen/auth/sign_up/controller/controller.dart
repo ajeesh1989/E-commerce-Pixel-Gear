@@ -25,12 +25,14 @@ class SignUpController extends GetxController {
     final signupmodel = SignUpModel(
         fullname: usernameController.text.trim(),
         email: emailController.text.trim(),
-        phone: phoneController.text.trim(),
+        // phone: phoneController.text.trim(),
         password: passwordController.text.trim());
     OtpServices().sendOtp(signupmodel.email).then((value) {
       if (value != null) {
-        Get.to(() => OTPscreen(model: signupmodel));
-        // disposeTextfield();
+        Get.to(() => OTPscreen(
+              model: signupmodel,
+            ));
+        disposeTextfield();
       } else {
         return;
       }
@@ -91,10 +93,8 @@ class SignUpController extends GetxController {
   String? passwordValdation(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your password';
-    } else if (value.length < 10) {
-      return 'Password must have atleast 10 character';
-    } else if (value.length > 10) {
-      return 'Password exceeds 10 character';
+    } else if (value.length < 8) {
+      return 'Password must have atleast 8 character';
     }
     return null;
   }

@@ -15,12 +15,14 @@ class SignInService {
 
   Future<SignInTokenModel?> signinCheckUser(SignInModel model) async {
     try {
+      log('keri');
       Response response = await dio.post(
         apibaseurl.baseUrl + apiendurl.signIn,
         data: jsonEncode(
           model.tojson(),
         ),
       );
+      log('r vannu');
       if (response.statusCode == 200 || response.statusCode == 201) {
         // ignore: non_constant_identifier_names
         final signInModel = SignInTokenModel.fromJson(response.data);

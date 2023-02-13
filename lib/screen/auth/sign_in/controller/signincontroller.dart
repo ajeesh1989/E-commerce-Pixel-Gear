@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
@@ -17,6 +19,7 @@ class SignInController extends GetxController {
   void signIn() {
     isLoading = true;
     update();
+    log('ghh');
     // ignore: non_constant_identifier_names
     final Signinmodel = SignInModel(
       email: emailController.text.trim(),
@@ -44,10 +47,8 @@ class SignInController extends GetxController {
   String? passwordValidation(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your password';
-    } else if (value.length < 10) {
-      return 'Password must have atleast 10 character';
-    } else if (value.length > 10) {
-      return 'Password exceeds 10 character';
+    } else if (value.length < 8) {
+      return 'Password must have atleast 8 character';
     }
     return null;
   }

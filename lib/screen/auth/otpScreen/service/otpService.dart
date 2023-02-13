@@ -10,13 +10,14 @@ class OtpServices {
   final apibaseUrl = ApiBaseUrl();
   final apiendUrl = ApiEndsUrl();
   Future<String?> sendOtp(email) async {
-    log('otp enabled');
     try {
-      final Response response = await dio.get(
+      log('otp enabled');
+      Response response = await dio.get(
         apibaseUrl.baseUrl + apiendUrl.verifyOtp,
         queryParameters: {"email": email},
       );
 
+      log(response.statusCode.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         log('otp created');
         log('otp done');

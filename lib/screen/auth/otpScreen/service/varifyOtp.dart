@@ -22,6 +22,7 @@ class VerifyOtpService {
       log(response.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         log('otp verified');
+        log(response.data.toString(), name: 'ver respo');
         return response.data['message'];
       }
     } on DioError catch (e) {

@@ -5,6 +5,7 @@ import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/carousal_padding.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/category_items.dart';
+import 'package:pixel_gear/screen/Home/view/widgets/drawerWidget.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/home_grid.dart';
 
 // ignore: must_be_immutable
@@ -71,14 +72,14 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         elevation: .25,
-        backgroundColor: kwhitecolor,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.menu,
-            color: kblackcolor,
-          ),
-        ),
+        backgroundColor: Colors.white,
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.menu,
+        //     color: kblackcolor,
+        //   ),
+        //   onPressed: () => Scaffold.of(context).openDrawer(),
+        // ),
         title: Text(
           'P I X E L  G E A R',
           style: GoogleFonts.openSans(
@@ -88,19 +89,13 @@ class HomePage extends GetView<HomeController> {
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.search,
-              color: kblackcolor,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.shopping_cart,
+              Icons.shopping_cart_outlined,
               color: kblackcolor,
             ),
           ),
         ],
       ),
+      drawer: DrawerWidget(),
       body: GetBuilder<HomeController>(
         builder: (controller) => SingleChildScrollView(
           child: Column(

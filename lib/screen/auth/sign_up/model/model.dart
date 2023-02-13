@@ -1,13 +1,13 @@
 class SignUpModel {
   final String fullname;
   final String email;
-  final String phone;
+  // final String phone;
   final String password;
 
   SignUpModel({
     required this.fullname,
     required this.email,
-    required this.phone,
+    // required this.phone,
     required this.password,
   });
 
@@ -15,7 +15,7 @@ class SignUpModel {
     return SignUpModel(
       fullname: json["fullname"] ?? '',
       email: json["email"] ?? '',
-      phone: json["phone"] ?? '',
+      // phone: json["phone"] ?? '',
       password: json["password"] ?? '',
     );
   }
@@ -23,7 +23,7 @@ class SignUpModel {
     return {
       "fullname": fullname,
       "email": email,
-      "phone": phone,
+      // "phone": phone,
       "password": password,
     };
   }

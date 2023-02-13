@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_gear/core/colors.dart';
+import 'package:pixel_gear/util/Box/box.dart';
 
 class HomeGrid extends StatelessWidget {
   const HomeGrid({
@@ -27,23 +28,27 @@ class HomeGrid extends StatelessWidget {
           crossAxisCount: 2,
         ),
         itemBuilder: (BuildContext ctx, int index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  height: height * 0.10,
-                  width: width * 0.30,
-                  decoration: BoxDecoration(
-                    color: greycolor,
-                    image: DecorationImage(
-                        image: NetworkImage(gridList[index]),
-                        fit: BoxFit.cover),
+          return Box(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Container(
+                    height: height * 0.16,
+                    width: width * 0.38,
+                    decoration: BoxDecoration(
+                      color: greycolor,
+                      image: DecorationImage(
+                          image: NetworkImage(gridList[index]),
+                          fit: BoxFit.cover),
+                    ),
                   ),
-                ),
-                kheight10,
-                Text(gridNames[index])
-              ],
+                  kheight10,
+                  Text(
+                    gridNames[index],
+                  ),
+                ],
+              ),
             ),
           );
         },

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Cart/view/cart.dart';
-import 'package:pixel_gear/screen/MyAccount/view/myaccount.dart';
+import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
 import 'package:pixel_gear/screen/Search/view/search.dart';
 
 import '../../home/view/home.dart';
@@ -18,8 +18,8 @@ class BottomNavPage extends GetView<BottomNavigationController> {
   final screen = [
     HomePage(),
     const CategoryPage(),
-    const CartPage(),
-    const MyAccountPage(),
+    const SearchPage(),
+    const WishlistPage(),
   ];
 
   @override
@@ -55,13 +55,13 @@ class BottomNavPage extends GetView<BottomNavigationController> {
               backgroundColor: kwhitecolor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart, color: kblackcolor),
-              label: 'MyCart',
+              icon: Icon(Icons.search, color: kblackcolor),
+              label: 'Search',
               backgroundColor: kwhitecolor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: kblackcolor),
-              label: 'Account',
+              icon: Icon(Icons.favorite_border, color: kblackcolor),
+              label: 'Wish list',
               backgroundColor: kwhitecolor,
             ),
           ],

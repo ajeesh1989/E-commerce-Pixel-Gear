@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_gear/core/colors.dart';
+import 'package:pixel_gear/screen/SplashScreen/Controller/splash_controller.dart';
 
 class SplashScreen extends GetView {
-  const SplashScreen({super.key});
+  SplashScreen({super.key});
+
+  final splashController = Get.put(SplashscreenController());
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      splashController.splashTimer();
+    });
     return Scaffold(
       backgroundColor: kwhitecolor,
       body: SafeArea(

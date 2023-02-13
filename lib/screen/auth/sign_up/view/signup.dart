@@ -79,7 +79,7 @@ class SignUp extends GetView<SignUpController> {
                           ),
                         ),
                       ),
-                      kheight10,
+                      kheight20,
                       SizedBox(
                         width: 350,
                         child: TextFormField(
@@ -117,45 +117,7 @@ class SignUp extends GetView<SignUpController> {
                           ),
                         ),
                       ),
-                      kheight10,
-                      SizedBox(
-                        width: 350,
-                        child: TextFormField(
-                          keyboardType: TextInputType.number,
-                          validator: (value) =>
-                              signupController.mobileValidation(value),
-                          controller: signupController.phoneController,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white70,
-                            prefixIcon: const Icon(
-                              Icons.phone,
-                              color: kblackcolor,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(20)),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(20)),
-                            disabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(20)),
-                            focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius: BorderRadius.circular(20)),
-                            errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius: BorderRadius.circular(20)),
-                            labelText: 'Phone number',
-                            labelStyle: const TextStyle(color: greycolor),
-                          ),
-                        ),
-                      ),
-                      kheight10,
+                      kheight20,
                       SizedBox(
                         width: 350,
                         child: TextFormField(
@@ -201,7 +163,7 @@ class SignUp extends GetView<SignUpController> {
                           ),
                         ),
                       ),
-                      kheight10,
+                      kheight20,
                       SizedBox(
                         width: 350,
                         child: TextFormField(
@@ -248,7 +210,7 @@ class SignUp extends GetView<SignUpController> {
                           ),
                         ),
                       ),
-                      kheight10,
+                      kheight20,
                       const Text('By creating an account, you agree to our'),
                       kheight05,
                       const Text(
@@ -280,22 +242,6 @@ class SignUp extends GetView<SignUpController> {
                           ),
                         ),
                       ),
-                      // Row(
-                      //   children: [
-                      //     kwidth65,
-                      //     const Text(
-                      //       'Already have an account?',
-                      //       style: TextStyle(color: Colors.black54),
-                      //     ),
-                      //     TextButton(
-                      //       onPressed: () {
-                      //         Get.off(() => SignIn());
-                      //       },
-                      //       child: const Text('Sign In'),
-                      //     ),
-                      //     kwidth
-                      //   ],
-                      // ),
                       kheight20,
                       Center(
                         child: RichText(
