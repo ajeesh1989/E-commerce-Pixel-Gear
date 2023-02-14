@@ -15,30 +15,12 @@ class HomePage extends GetView<HomeController> {
   });
 
   final homeconntroller = Get.put(HomeController());
-  final images = [
-    'https://assetscdn1.paytm.com/images/catalog/view_item/599013/1614322892185.jpg?imwidth=1600&impolicy=hq',
-    'https://www.shopickr.com/wp-content/uploads/2016/06/amazon-india-dslr-camera-best-discounts-offers-coupons.jpg',
-    'https://i0.wp.com/pixelpluck.com/wp-content/uploads/2017/02/Nikon-D810-and-D750-buy-back-offer-1.jpg?fit=585%2C332&ssl=1'
-  ];
+  // final images = [
+  //   'https://assetscdn1.paytm.com/images/catalog/view_item/599013/1614322892185.jpg?imwidth=1600&impolicy=hq',
+  //   'https://www.shopickr.com/wp-content/uploads/2016/06/amazon-india-dslr-camera-best-discounts-offers-coupons.jpg',
+  //   'https://i0.wp.com/pixelpluck.com/wp-content/uploads/2017/02/Nikon-D810-and-D750-buy-back-offer-1.jpg?fit=585%2C332&ssl=1'
+  // ];
 
-  final categoryList = [
-    'https://global.canon/00cmn/img/common/ogp-logo.png',
-    'https://cdn.freebiesupply.com/logos/large/2x/nikon-9-logo-black-and-white.png',
-    'https://cdn.icon-icons.com/icons2/2845/PNG/512/sony_logo_icon_181261.png',
-    'https://static.gopro.com/assets/blta2b8522e5372af40/blt5986996c9f5645f1/61aa5e5155cf14733fc5bd10/gopro-logo-black-white.png',
-    'https://www.olympusamerica.com/sites/default/files/styles/card/public/2021-10/logo-blue-gold.jpg?h=d595f4a7&itok=4c_HECGe',
-    'https://m.media-amazon.com/images/I/71oXkSlPrzL._SX522_.jpg',
-    'https://m.media-amazon.com/images/I/41a-cOKhPkL._SX522_.jpg'
-  ];
-  final List<String> categorynames = [
-    'Canon',
-    'Nikon',
-    'Sony',
-    'Go pro',
-    'Olympus',
-    'Camera lights',
-    'Security cameras'
-  ];
   final gridList = [
     'https://i.pinimg.com/564x/19/b5/56/19b55664ac790e0b9c0a2c701abb90a8.jpg',
     'https://i.pinimg.com/564x/ee/e8/65/eee865cf4b4cf1da1511fe642ed3695d.jpg',
@@ -72,7 +54,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         elevation: .25,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade900,
         // leading: IconButton(
         //   icon: const Icon(
         //     Icons.menu,
@@ -83,14 +65,14 @@ class HomePage extends GetView<HomeController> {
         title: Text(
           'P I X E L  G E A R',
           style: GoogleFonts.openSans(
-              fontSize: 20, color: Colors.black, fontWeight: FontWeight.w100),
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.w100),
         ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.shopping_cart_outlined,
-              color: kblackcolor,
+              color: kwhitecolor,
             ),
           ),
         ],
@@ -101,10 +83,10 @@ class HomePage extends GetView<HomeController> {
           child: Column(
             children: [
               CarousalPadding(
-                  height: height,
-                  homeconntroller: homeconntroller,
-                  width: width,
-                  images: images),
+                height: height,
+                homeconntroller: homeconntroller,
+                width: width,
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 15),
                 child: Row(
@@ -112,27 +94,31 @@ class HomePage extends GetView<HomeController> {
                   children: const [
                     Text(
                       'Categories',
-                      style: TextStyle(fontSize: 18),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
               ),
               CategoryWidget(
-                  height: height,
-                  categoryList: categoryList,
-                  categorynames: categorynames),
+                homeController: homeconntroller,
+                height: height,
+              ),
+              kheight05,
               Padding(
-                padding: const EdgeInsets.only(left: 15),
+                padding: const EdgeInsets.only(left: 15, top: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: const [
                     Text(
-                      'New Arrivals',
-                      style: TextStyle(fontSize: 18),
+                      'Top selling products',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
               ),
+              kheight05,
               HomeGrid(
                   height: height,
                   width: width,

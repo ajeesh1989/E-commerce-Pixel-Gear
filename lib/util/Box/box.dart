@@ -17,7 +17,7 @@ class Box extends GetView {
           borderRadius: BorderRadius.circular(5),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.shade400,
+              color: Colors.grey.shade500,
               blurRadius: 15,
               offset: const Offset(5, 5),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Account/Controller/account_controller.dart';
 
 class DrawerWidget extends GetView {
@@ -20,9 +21,9 @@ class DrawerWidget extends GetView {
                 'P i x e l  G e a r',
                 textAlign: TextAlign.center,
                 style: (TextStyle(
-                  fontSize: 24,
+                  fontSize: 30,
                   color: Colors.black,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w400,
                 )),
               ),
             ),
@@ -30,10 +31,11 @@ class DrawerWidget extends GetView {
           ListTile(
             leading: const Icon(
               Icons.home,
+              color: kblackcolor,
             ),
             title: const Text(
               'Back to home',
-              style: TextStyle(fontSize: 16, color: Colors.black54),
+              style: TextStyle(fontSize: 16, color: kblackcolor),
             ),
             onTap: () {
               Get.back();
@@ -44,30 +46,43 @@ class DrawerWidget extends GetView {
               ExpansionTile(
                 title: const Text(
                   "My Account",
-                  style: TextStyle(fontSize: 16, color: Colors.black54),
+                  style: TextStyle(fontSize: 16, color: kblackcolor),
                 ),
                 leading: const Icon(
                   Icons.person,
+                  color: kblackcolor,
                 ), //add icon
                 childrenPadding:
                     const EdgeInsets.only(left: 60), //children padding
                 children: [
                   ListTile(
-                    leading: const Icon(Icons.shopping_bag_outlined),
-                    title: const Text("My orders"),
+                    leading: const Icon(
+                      Icons.shopping_bag_outlined,
+                      color: kblackcolor,
+                    ),
+                    title: const Text(
+                      "My orders",
+                      style: TextStyle(color: kblackcolor),
+                    ),
                     onTap: () {
                       //action on press
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.favorite_border),
+                    leading: const Icon(
+                      Icons.favorite_border,
+                      color: kblackcolor,
+                    ),
                     title: const Text("My wishlist"),
                     onTap: () {
                       //action on press
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.shopping_cart_outlined),
+                    leading: const Icon(
+                      Icons.shopping_cart_outlined,
+                      color: kblackcolor,
+                    ),
                     title: const Text("My cart"),
                     onTap: () {
                       //action on press
@@ -80,10 +95,11 @@ class DrawerWidget extends GetView {
           ListTile(
             leading: const Icon(
               Icons.book_outlined,
+              color: kblackcolor,
             ),
             title: const Text(
               'Terms & conditions',
-              style: TextStyle(fontSize: 16, color: Colors.black54),
+              style: TextStyle(fontSize: 16, color: kblackcolor),
             ),
             onTap: () {
               Get.back();
@@ -92,10 +108,11 @@ class DrawerWidget extends GetView {
           ListTile(
             leading: const Icon(
               Icons.camera,
+              color: kblackcolor,
             ),
             title: const Text(
               'About   P i x e l  G e a r ',
-              style: TextStyle(fontSize: 16, color: Colors.black54),
+              style: TextStyle(fontSize: 16, color: kblackcolor),
             ),
             onTap: () {
               Get.back();
@@ -105,13 +122,14 @@ class DrawerWidget extends GetView {
             onPressed: () {
               accountController.logout();
             },
-            child: ListTile(
-              leading: const Icon(
+            child: const ListTile(
+              leading: Icon(
                 Icons.logout,
+                color: kblackcolor,
               ),
-              title: const Text(
+              title: Text(
                 'Log out',
-                style: TextStyle(fontSize: 16, color: Colors.black54),
+                style: TextStyle(fontSize: 16, color: kblackcolor),
               ),
             ),
           ),

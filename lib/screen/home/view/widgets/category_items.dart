@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:pixel_gear/api/api_baseurl.dart';
+import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
+import 'package:pixel_gear/screen/Home/model/categorymodel.dart';
 import 'package:pixel_gear/util/Box/box.dart';
 
 import '../../../../core/colors.dart';
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({
+  CategoryWidget({
     super.key,
     required this.height,
-    required this.categoryList,
-    required this.categorynames,
+    required this.homeController,
   });
 
   final double height;
-  final List<String> categoryList;
-  final List<String> categorynames;
+
+  final HomeController homeController;
+  final apibaseurl = ApiBaseUrl();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class CategoryWidget extends StatelessWidget {
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: List.generate(
-            categoryList.length,
+            homeController.categoryList.length,
             (index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -32,10 +35,17 @@ class CategoryWidget extends StatelessWidget {
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: kwhitecolor,
-                      backgroundImage: NetworkImage(categoryList[index]),
+                      backgroundImage: NetworkImage(
+                          '${apibaseurl.baseUrl}/category/${homeController.categoryList[index].image}'),
                     ),
-                    kheight10,
-                    Text(categorynames[index])
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      homeController.categoryList[index].name,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
                   ],
                 ),
               );
