@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
-import 'package:pixel_gear/screen/Cart/view/cart.dart';
-import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
 import 'package:pixel_gear/screen/Search/view/search.dart';
+import 'package:pixel_gear/screen/Category/view/category.dart';
+import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
 
 import '../../home/view/home.dart';
 import '../Controller/controller.dart';
@@ -17,7 +17,7 @@ class BottomNavPage extends GetView<BottomNavigationController> {
 
   final screen = [
     HomePage(),
-    const CategoryPage(),
+    CategoryPage(),
     const SearchPage(),
     const WishlistPage(),
   ];
