@@ -11,6 +11,10 @@ class CategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: HomeGrid(height: height, width: width));
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: HomeGrid(height: height, width: width),
+      ),
+    );
   }
 }

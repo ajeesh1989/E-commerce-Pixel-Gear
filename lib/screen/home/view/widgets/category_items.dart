@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
-import 'package:pixel_gear/screen/Home/model/categorymodel.dart';
 import 'package:pixel_gear/util/Box/box.dart';
 
 import '../../../../core/colors.dart';
 
-class CategoryWidget extends StatelessWidget {
+class CategoryWidget extends GetView {
   CategoryWidget({
     super.key,
     required this.height,

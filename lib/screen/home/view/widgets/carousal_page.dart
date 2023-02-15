@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 
-class CarousalWidget extends StatelessWidget {
+class CarousalWidget extends GetView {
   CarousalWidget({
     super.key,
     required this.height,
