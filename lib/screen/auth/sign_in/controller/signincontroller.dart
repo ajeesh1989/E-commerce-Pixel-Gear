@@ -19,7 +19,7 @@ class SignInController extends GetxController {
   void signIn() {
     isLoading = true;
     update();
-    log('ghh');
+
     // ignore: non_constant_identifier_names
     final Signinmodel = SignInModel(
       email: emailController.text.trim(),

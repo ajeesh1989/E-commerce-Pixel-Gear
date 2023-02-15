@@ -9,4 +9,5 @@ class ApiEndsUrl {
   String category = '/api/v1/category';
   String products = '/api/v1/products';
   String refresh = '/api/v1/auth/refresh';
+  String product = '/api/v1/products';
 }
