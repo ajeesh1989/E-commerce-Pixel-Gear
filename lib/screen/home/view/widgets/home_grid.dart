@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_cards/flutter_custom_cards.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
@@ -32,51 +33,69 @@ class HomeGrid extends StatelessWidget {
         shrinkWrap: true,
         itemCount: productC.productList.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: 1 / 1.2,
+          childAspectRatio: 1 / 1.37,
           crossAxisCount: 2,
         ),
         itemBuilder: (BuildContext ctx, int index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: width * 0.5,
-              height: height * 0.1,
-              child: Column(
-                children: [
-                  Container(
-                    height: height * 0.16,
-                    width: width * 0.50,
-                    decoration: BoxDecoration(
-                      color: greycolor,
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              '${apibaseUrl.baseUrl}/products/${productC.productList[index].image[0]}'),
-                          fit: BoxFit.cover),
-                    ),
-                  ),
-                  kheight10,
-                  // Text(
-                  //   gridNames[index],
-                  // ),
-                  Text(
-                    productC.productList[index].description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.w400),
-                  ),
-                  kheight10,
-                  Row(
-                    children: [
-                      Text(
-                        "₹ ${productC.productList[index].price.toString()}",
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+            child: CustomCard(
+              elevation: 10,
+              child: Container(
+                width: width * 0.5,
+                height: height * 0.1,
+                child: Column(
+                  children: [
+                    Container(
+                      height: height * 0.16,
+                      width: width * 0.50,
+                      decoration: BoxDecoration(
+                        color: greycolor,
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                '${apibaseUrl.baseUrl}/products/${productC.productList[index].image[0]}'),
+                            fit: BoxFit.cover),
                       ),
-                    ],
-                  )
-                ],
+                    ),
+                    kheight10,
+                    // Text(
+                    //   gridNames[index],
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 1),
+                      child: Text(
+                        productC.productList[index].description,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                    kheight10,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "₹ ${productC.productList[index].price.toString()}",
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Text(
+                              "${productC.productList[index].rating.toString()}"),
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           );
