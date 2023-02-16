@@ -30,23 +30,28 @@ class CategoryWidget extends GetView {
             (index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: kwhitecolor,
-                      backgroundImage: NetworkImage(
-                          '${apibaseurl.baseUrl}/category/${homeController.categoryList[index].image}'),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      homeController.categoryList[index].name,
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                  ],
+                child: InkWell(
+                  onTap: () {
+                    // Get.to(page);
+                  },
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundColor: kwhitecolor,
+                        backgroundImage: NetworkImage(
+                            '${apibaseurl.baseUrl}/category/${homeController.categoryList[index].image}'),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        homeController.categoryList[index].name,
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
