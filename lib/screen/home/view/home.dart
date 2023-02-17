@@ -66,13 +66,21 @@ class HomePage extends GetView<HomeController> {
                     Padding(
                       padding: const EdgeInsets.only(top: 6, left: 15),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
                           Text(
                             'Top selling brands',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w500),
                           ),
+                          // Padding(
+                          //   padding: EdgeInsets.all(8.0),
+                          //   child: Text(
+                          //     '<<< slide left',
+                          //     style: TextStyle(
+                          //         fontSize: 13, color: Colors.black26),
+                          //   ),
+                          // )
                         ],
                       ),
                     ),

@@ -5,7 +5,6 @@ import 'package:pixel_gear/screen/Home/model/productmodel.dart';
 import 'package:pixel_gear/screen/Home/service/carousal_service.dart';
 import 'package:pixel_gear/screen/Home/service/category_service.dart';
 import 'package:pixel_gear/screen/Home/service/product_service.dart';
-import 'package:pixel_gear/screen/product/view/product.dart';
 
 class HomeController extends GetxController {
   HomeController() {

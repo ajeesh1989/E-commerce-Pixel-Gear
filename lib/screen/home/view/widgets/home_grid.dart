@@ -35,77 +35,86 @@ class HomeGrid extends GetView {
             crossAxisCount: 2,
           ),
           itemBuilder: (BuildContext ctx, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {
-                  Get.to(ProductScreen(
-                    height: height,
-                    width: width,
-                    productid: productC.productList[index].id,
-                  ));
-                  // productC.toProdutScreen(index);
-                },
-                child: CustomCard(
-                  elevation: 10,
-                  child: SizedBox(
-                    width: width * 0.5,
-                    height: height * 0.1,
-                    child: Column(
-                      children: [
-                        Container(
-                          height: height * 0.16,
-                          width: width * 0.50,
-                          decoration: BoxDecoration(
-                            color: greycolor,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    '${apibaseUrl.baseUrl}/products/${productC.productList[index].image[0]}'),
-                                fit: BoxFit.cover),
-                          ),
-                        ),
-                        kheight10,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 5, vertical: 1),
-                          child: Text(
-                            productC.productList[index].description,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 16),
-                          ),
-                        ),
-                        kheight10,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  "₹ ${productC.productList[index].price.toString()}",
-                                  style: const TextStyle(
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.bold,
+            return Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(ProductScreen(
+                        height: height,
+                        width: width,
+                        productid: productC.productList[index].id,
+                      ));
+                      // productC.toProdutScreen(index);
+                    },
+                    child: CustomCard(
+                      elevation: 10,
+                      child: SizedBox(
+                        width: width * 0.5,
+                        height: height * 0.3,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: height * 0.16,
+                              width: width * 0.50,
+                              decoration: BoxDecoration(
+                                color: greycolor,
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        '${apibaseUrl.baseUrl}/products/${productC.productList[index].image[0]}'),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                            kheight10,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 1),
+                              child: Text(
+                                productC.productList[index].description,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w400, fontSize: 16),
+                              ),
+                            ),
+                            kheight10,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "₹ ${productC.productList[index].price.toString()}",
+                                      style: const TextStyle(
+                                        fontSize: 21,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Text(
+                                    "${productC.productList[index].rating.toString()}",
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  )
+                                ],
                               ),
-                              Text(
-                                "${productC.productList[index].rating.toString()}",
-                                style: const TextStyle(fontSize: 15),
-                              ),
-                              const Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                              )
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Positioned(
+                    left: width * 0.377,
+                    top: height * 0.02,
+                    child: const Icon(Icons.favorite))
+              ],
             );
           },
         ),
