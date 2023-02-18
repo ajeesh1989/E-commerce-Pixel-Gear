@@ -4,6 +4,7 @@ import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Search/view/search.dart';
 import 'package:pixel_gear/screen/Category/view/category.dart';
 import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
+import 'package:pixel_gear/screen/allproducts/all_products.dart';
 
 import '../../home/view/home.dart';
 import '../Controller/controller.dart';
@@ -18,8 +19,12 @@ class BottomNavPage extends GetView<BottomNavigationController> {
   final screen = [
     HomePage(),
     CategoryPage(),
+    // AllProductsPage(),
     const SearchPage(),
-    const WishlistPage(),
+    WishlistPage(
+      height: Get.height,
+      width: Get.width,
+    ),
   ];
 
   @override
@@ -50,10 +55,15 @@ class BottomNavPage extends GetView<BottomNavigationController> {
               backgroundColor: kwhitecolor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.camera, color: kblackcolor),
+              icon: Icon(Icons.category_outlined, color: kblackcolor),
               label: 'Category',
               backgroundColor: kwhitecolor,
             ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.camera, color: kblackcolor),
+            //   label: 'Products',
+            //   backgroundColor: kwhitecolor,
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.search, color: kblackcolor),
               label: 'Search',

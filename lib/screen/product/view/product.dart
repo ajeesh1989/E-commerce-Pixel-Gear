@@ -1,5 +1,5 @@
+import 'package:pixel_gear/screen/Cart/controller/cart_controller.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
-import 'package:pixel_gear/screen/Home/model/productmodel.dart';
 import 'package:pixel_gear/screen/product/widget/productViewBottomNav.dart';
 import 'package:pixel_gear/screen/product/widget/productViewCarousal.dart';
 import 'package:pixel_gear/screen/product/widget/productViewRating.dart';
@@ -18,6 +18,7 @@ class ProductScreen extends GetView {
   });
   // static String routeName = '/product.dart';
   final String productid;
+  final cartC = Get.put(CartController());
 
   double height = Get.size.height;
   double width = Get.size.width;
@@ -26,7 +27,6 @@ class ProductScreen extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    // final productId = ModalRoute.of(context)?.settings.arguments as String;
     final findproduct = homeC.findById(productid);
     return Scaffold(
       body: GetBuilder<ProductController>(
@@ -39,7 +39,7 @@ class ProductScreen extends GetView {
                 productmodel: findproduct,
                 height: height,
                 width: width,
-                productC: productC,
+                productCc: productC,
               ),
               kheight10,
               Padding(
@@ -91,10 +91,6 @@ class ProductScreen extends GetView {
                   kwidth,
                   Row(
                     children: [
-                      // const Text(
-                      //   "Price",
-                      //   style: TextStyle(color: Colors.black38, fontSize: 18),
-                      // ),
                       Text(
                         "Offer ${findproduct.offer.toString()}% off",
                         style: const TextStyle(
@@ -115,8 +111,12 @@ class ProductScreen extends GetView {
           ),
         ),
       ),
-      bottomNavigationBar:
-          ProductviewBottomNavwidget(height: height, width: width),
+      bottomNavigationBar: ProductviewBottomNavwidget(
+        height: height,
+        width: width,
+        size: findproduct.size[0],
+        id: findproduct.id,
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_gear/core/colors.dart';
+import 'package:pixel_gear/screen/Cart/view/cart.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Home/view/shimmers/carousalshimmer.dart';
 import 'package:pixel_gear/screen/Home/view/shimmers/categoryshimmer.dart';
@@ -37,7 +38,12 @@ class HomePage extends GetView<HomeController> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(MyCart(
+                height: height,
+                width: width,
+              ));
+            },
             icon: const Icon(
               Icons.shopping_cart_outlined,
               color: kwhitecolor,

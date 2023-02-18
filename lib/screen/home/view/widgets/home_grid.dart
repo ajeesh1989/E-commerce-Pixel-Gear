@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
+import 'package:pixel_gear/screen/Wishlist/controller/wishlist_controller.dart';
 import 'package:pixel_gear/screen/product/view/product.dart';
 
 class HomeGrid extends GetView {
@@ -19,6 +20,9 @@ class HomeGrid extends GetView {
   final apibaseUrl = ApiBaseUrl();
   final productC = Get.put(
     HomeController(),
+  );
+  final wishlistcontroller = Get.put(
+    WishListController(),
   );
 
   @override
@@ -111,9 +115,31 @@ class HomeGrid extends GetView {
                   ),
                 ),
                 Positioned(
-                    left: width * 0.377,
-                    top: height * 0.02,
-                    child: const Icon(Icons.favorite))
+                  left: width * 0.346,
+                  top: height * 0.01,
+                  child: GetBuilder<WishListController>(
+                    builder: (controller) => IconButton(
+                      onPressed: () {
+                        wishlistcontroller.addOrRemoveFromWishlist(
+                            productC.productList[index].id);
+                      },
+                      icon: wishlistcontroller.wishList.isEmpty
+                          ? const Icon(Icons.favorite_border_outlined)
+                          : Icon(
+                              wishlistcontroller.wishList
+                                      .contains(productC.productList[index].id)
+                                  ? Icons.favorite
+                                  : Icons.favorite_border_outlined,
+                              color: wishlistcontroller.wishList.isEmpty
+                                  ? kblackcolor
+                                  : wishlistcontroller.wishList.contains(
+                                          productC.productList[index].id)
+                                      ? kblackcolor
+                                      : Colors.black45,
+                            ),
+                    ),
+                  ),
+                ),
               ],
             );
           },

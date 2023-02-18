@@ -10,4 +10,6 @@ class ApiEndsUrl {
   String products = '/api/v1/products';
   String refresh = '/api/v1/auth/refresh';
   String product = '/api/v1/products';
+  String wishlist = '/api/v1/wishlist';
+  String cart = '/api/v1/cart';
 }

@@ -2,7 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
+import 'package:pixel_gear/core/colors.dart';
+import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Home/model/productmodel.dart';
+import 'package:pixel_gear/screen/Wishlist/controller/wishlist_controller.dart';
 import 'package:pixel_gear/screen/product/controller/productController.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -11,14 +14,22 @@ class ProductviewCarousalWidget extends StatelessWidget {
       {super.key,
       required this.height,
       required this.width,
-      required this.productC,
+      required this.productCc,
       required this.productmodel});
 
   final double height;
   final double width;
-  final ProductController productC;
+  final ProductController productCc;
   final ProductModel productmodel;
   final apibaseUrl = ApiBaseUrl();
+
+  final productC = Get.put(
+    HomeController(),
+  );
+
+  final wishlistcontroller = Get.put(
+    WishListController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +65,7 @@ class ProductviewCarousalWidget extends StatelessWidget {
               enlargeCenterPage: true,
               enlargeFactor: 0.3,
               onPageChanged: (index, reason) {
-                productC.changeCarousalPosition(index);
+                productCc.changeCarousalPosition(index);
               },
               scrollDirection: Axis.horizontal,
             ),
@@ -69,22 +80,32 @@ class ProductviewCarousalWidget extends StatelessWidget {
           Positioned(
             top: height * 0.02,
             left: width * 0.82,
-            child: control.iconChange == 0
-                ? IconButton(
-                    onPressed: () => control.iconchange(1),
-                    icon: Icon(Icons.favorite_outline))
-                : IconButton(
-                    onPressed: () {
-                      control.iconchange(0);
-                    },
-                    icon: const Icon(Icons.favorite),
-                  ),
+            child: GetBuilder<WishListController>(
+              builder: (controller) => IconButton(
+                onPressed: () {
+                  wishlistcontroller.addOrRemoveFromWishlist(productmodel.id);
+                },
+                icon: wishlistcontroller.wishList.isEmpty
+                    ? const Icon(Icons.favorite_border_outlined)
+                    : Icon(
+                        wishlistcontroller.wishList.contains(productmodel.id)
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        color: wishlistcontroller.wishList.isEmpty
+                            ? kblackcolor
+                            : wishlistcontroller.wishList
+                                    .contains(productmodel.id)
+                                ? kblackcolor
+                                : Colors.black45,
+                      ),
+              ),
+            ),
           ),
           Positioned(
             top: height * 0.35,
             left: width * 0.40,
             child: AnimatedSmoothIndicator(
-              activeIndex: productC.activeCarousal,
+              activeIndex: productCc.activeCarousal,
               count: productmodel.image.length,
               effect: const WormEffect(
                   dotHeight: 10,
