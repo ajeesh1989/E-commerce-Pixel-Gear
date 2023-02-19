@@ -39,20 +39,39 @@ class WishlistPage extends GetView<WishListController> {
             'My wishlist',
             style: TextStyle(color: kblackcolor),
           ),
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            // ignore: prefer_const_constructors
+            icon: Icon(
+              Icons.arrow_back,
+              color: kblackcolor,
+            ),
+          ),
         ),
         body: controller.wishList.isEmpty
-            ? const Center(
-                child: Text(
-                  'Your wishlist is empty!',
-                  style: TextStyle(fontSize: 20, color: greycolor),
-                ),
+            ? Column(
+                children: [
+                  kheight80,
+                  Image.asset('lib/images/emptywishlist.jpg'),
+                  const Text(
+                    'Your wishlist is empty!',
+                    style: TextStyle(fontSize: 20, color: kblackcolor),
+                  ),
+                  kheight10,
+                  const Text(
+                    'Explore more and shortlist some items.',
+                    style: TextStyle(fontSize: 16, color: greycolor),
+                  )
+                ],
               )
             : GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: wishListController.wishList.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1 / 1.37,
+                  childAspectRatio: 1 / 1.45,
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (BuildContext ctx, int index) {
@@ -138,7 +157,8 @@ class WishlistPage extends GetView<WishListController> {
                                     onTap: () {},
                                     child: const Text(
                                       'Add to cart',
-                                      style: TextStyle(color: Colors.blue),
+                                      style: TextStyle(
+                                          color: Colors.blue, fontSize: 15),
                                     ),
                                   )
                                 ],

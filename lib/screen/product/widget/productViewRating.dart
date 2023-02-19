@@ -47,7 +47,7 @@ class ProductviewRating extends StatelessWidget {
         ),
         const Text(
           'In stock',
-          style: TextStyle(color: Colors.green),
+          style: TextStyle(color: Colors.green, fontSize: 15),
         )
       ],
     );

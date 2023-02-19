@@ -83,6 +83,8 @@ flutter:
    - lib/images/onboadd.jpeg
    - lib/images/google-logo-9808.png
    - lib/images/otpAuth.avif
+   - lib/images/cartempty.jpg
+   - lib/images/emptywishlist.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

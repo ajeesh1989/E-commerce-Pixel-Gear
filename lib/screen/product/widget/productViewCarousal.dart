@@ -52,7 +52,7 @@ class ProductviewCarousalWidget extends StatelessWidget {
               );
             },
             options: CarouselOptions(
-              height: height * 0.45,
+              height: height * 0.40,
               aspectRatio: 1 / 6,
               viewportFraction: 1,
               initialPage: 0,
@@ -70,16 +70,9 @@ class ProductviewCarousalWidget extends StatelessWidget {
               scrollDirection: Axis.horizontal,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: height * 0.02),
-            child: IconButton(
-              onPressed: () => Get.back(),
-              icon: const Icon(Icons.arrow_back_rounded),
-            ),
-          ),
           Positioned(
-            top: height * 0.02,
-            left: width * 0.82,
+            top: height * 0.0,
+            left: width * 0.85,
             child: GetBuilder<WishListController>(
               builder: (controller) => IconButton(
                 onPressed: () {

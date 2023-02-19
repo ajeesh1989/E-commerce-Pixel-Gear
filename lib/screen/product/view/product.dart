@@ -1,5 +1,7 @@
 import 'package:pixel_gear/screen/Cart/controller/cart_controller.dart';
+import 'package:pixel_gear/screen/Cart/view/cart.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
+import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
 import 'package:pixel_gear/screen/product/widget/productViewBottomNav.dart';
 import 'package:pixel_gear/screen/product/widget/productViewCarousal.dart';
 import 'package:pixel_gear/screen/product/widget/productViewRating.dart';
@@ -29,6 +31,39 @@ class ProductScreen extends GetView {
   Widget build(BuildContext context) {
     final findproduct = homeC.findById(productid);
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          findproduct.name,
+          style: const TextStyle(color: greycolor, fontSize: 25),
+        ),
+        backgroundColor: kwhitecolor,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.to(() => MyCart(height: height, width: width));
+            },
+            icon: const Icon(
+              Icons.shopping_cart,
+              color: kblackcolor,
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.to(() => WishlistPage(height: height, width: width));
+            },
+            child: Text('Wishlist'),
+          )
+        ],
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: kblackcolor,
+          ),
+        ),
+        elevation: 0,
+      ),
       body: GetBuilder<ProductController>(
         builder: (controller) => Padding(
           padding: const EdgeInsets.all(10.0),
@@ -50,13 +85,13 @@ class ProductScreen extends GetView {
                 ),
               ),
               kheight10,
-              Text(
-                findproduct.name,
-                style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                    color: greycolor),
-              ),
+              // Text(
+              //   findproduct.name,
+              //   style: const TextStyle(
+              //       fontWeight: FontWeight.w500,
+              //       fontSize: 20,
+              //       color: greycolor),
+              // ),
               kheight10,
               ReadMoreText(
                 findproduct.description,
