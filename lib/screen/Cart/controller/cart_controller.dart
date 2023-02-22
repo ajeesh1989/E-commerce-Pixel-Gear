@@ -32,6 +32,7 @@ class CartController extends GetxController {
         update();
         cartItemsId = cartList!.products.map((e) => e.product.id).toList();
         totalSave = (cartList!.totalPrice - cartList!.totalDiscount).toInt();
+        log(totalSave.toString());
         totalProductCount();
         update();
         isLoading = false;
@@ -130,8 +131,8 @@ class CartController extends GetxController {
                   cartItemsId =
                       cartList!.products.map((e) => e.product.id).toList();
                   update();
-                  totalSave = cartList!.totalDiscount.toInt() -
-                      cartList!.totalPrice.toInt();
+                  totalSave =
+                      (cartList!.totalPrice - cartList!.totalDiscount).toInt();
                   update();
                 } else {
                   null;

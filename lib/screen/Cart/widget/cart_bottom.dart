@@ -25,7 +25,7 @@ class CartBottom extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            "Total " + cartC.totalSave.toString(),
+            "Total ${cartC.totalSave}",
             style: TextStyle(color: kblackcolor, fontSize: 18),
           ),
           SizedBox(
