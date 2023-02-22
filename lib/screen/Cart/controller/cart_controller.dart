@@ -32,7 +32,8 @@ class CartController extends GetxController {
         update();
         cartItemsId = cartList!.products.map((e) => e.product.id).toList();
         totalSave = (cartList!.totalPrice - cartList!.totalDiscount).toInt();
-        log(totalSave.toString());
+        update();
+        log(totalSave.toString(), name: 'get total save');
         totalProductCount();
         update();
         isLoading = false;
@@ -81,7 +82,7 @@ class CartController extends GetxController {
       (value) {
         if (value != null) {
           getCart();
-          log(totalSave.toString());
+          log(totalSave.toString(), name: 'remove total save');
           // Get.back();
           Get.snackbar(
             backgroundColor: Colors.black,
@@ -134,6 +135,7 @@ class CartController extends GetxController {
                   totalSave =
                       (cartList!.totalPrice - cartList!.totalDiscount).toInt();
                   update();
+                  log(totalSave.toString(), name: 'add and remove total save');
                 } else {
                   null;
                 }

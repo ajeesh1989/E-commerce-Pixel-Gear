@@ -37,7 +37,8 @@ class MyCart extends StatelessWidget {
           style: TextStyle(color: kblackcolor),
         ),
       ),
-      body: GetBuilder<CartController>(
+      body: GetBuilder(
+        init: cartC,
         builder: (controller) => controller.cartItemsId.isEmpty
             ? CartGif(height: height, width: width)
             : ListView.builder(
