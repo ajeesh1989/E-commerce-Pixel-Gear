@@ -21,14 +21,14 @@ class CategoryGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeController2 = Get.put(HomeController());
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
           log('message');
-          log(homeController2.categoryList[index].id);
-          Get.to(() => AllProductsPage(categoryid: '63e9d346559f90a78c9f891c'));
+          log(homeController.categoryList.toString(), name: 'category id');
+          Get.to(() => AllProductsPage(
+              categoryid: homeController.categoryList[index].id));
         },
         child: Column(
           children: [

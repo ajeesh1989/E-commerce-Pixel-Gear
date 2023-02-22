@@ -30,6 +30,7 @@ class HomeController extends GetxController {
     await categoryS.getCategoryService().then(
       (value) {
         if (value != null) {
+          log(value.toString(), name: 'categoryList');
           categoryList = value;
           update();
           isLoading = false;

@@ -17,11 +17,13 @@ class CategoryService {
     try {
       Response response =
           await dio.get(apiBaseUrl.baseUrl + apiEndUrl.category);
+      log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final List<CategoryModel> categorylist = (response.data as List)
             .map((e) => CategoryModel.fromJson(e))
             .toList();
         log(categorylist[0].id);
+
         return categorylist;
       } else {
         return null;

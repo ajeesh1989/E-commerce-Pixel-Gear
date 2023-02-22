@@ -27,155 +27,151 @@ class AllProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final findbycategory = homeC.findByCategoryId(categoryid);
-    List<ProductModel> productList = findbycategory
-        .where((element) => element.category.contains(categoryid))
-        .toList();
-    log(findbycategory[0].category);
-    log(categoryid, name: 'categoryCheck');
-
-    log(productList.length.toString());
-    return GetBuilder<HomeController>(
-      builder: (controller) => Scaffold(
-        appBar: AppBar(
-          leading: GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: const Icon(
-              Icons.arrow_back,
-              color: kblackcolor,
-            ),
-          ),
-          elevation: 0,
-          backgroundColor: kwhitecolor,
-          centerTitle: true,
-          title: const Text(
-            'All Products',
-            style: TextStyle(color: kblackcolor),
+    log(categoryid, name: '1111');
+    return Scaffold(
+      appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: kblackcolor,
           ),
         ),
-        body: GetBuilder<HomeController>(
-          builder: (controller) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GridView.builder(
-              // physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: productList.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1 / 1.37,
-                crossAxisCount: 2,
-              ),
-              itemBuilder: (BuildContext ctx, int index) {
-                return Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(
-                            () => ProductScreen(
-                              height: height,
-                              width: width,
-                              productid: productList[index].id,
-                            ),
-                          );
-                          // productC.toProdutScreen(index);
-                        },
-                        child: CustomCard(
-                          elevation: 10,
-                          child: SizedBox(
-                            width: width * 0.5,
-                            height: height * 0.3,
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: height * 0.16,
-                                  width: width * 0.50,
-                                  decoration: BoxDecoration(
-                                    color: greycolor,
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                            '${apibaseUrl.baseUrl}/products/${productList[index].image[0]}'),
-                                        fit: BoxFit.cover),
-                                  ),
+        elevation: 0,
+        backgroundColor: kwhitecolor,
+        centerTitle: true,
+        title: const Text(
+          'All Products',
+          style: TextStyle(color: kblackcolor),
+        ),
+      ),
+      body: GetBuilder<HomeController>(
+        builder: (controller) => categoryid.isEmpty
+            ? SizedBox()
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                  // physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: findbycategory.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1 / 1.37,
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (BuildContext ctx, int index) {
+                    return Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(
+                                () => ProductScreen(
+                                  height: height,
+                                  width: width,
+                                  productid: findbycategory[index].id,
                                 ),
-                                kheight10,
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 1),
-                                  child: Text(
-                                    productList[index].description,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 16),
-                                  ),
-                                ),
-                                kheight10,
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          "₹ ${productList[index].price.toString()}",
-                                          style: const TextStyle(
-                                            fontSize: 21,
-                                            fontWeight: FontWeight.bold,
+                              );
+                              // productC.toProdutScreen(index);
+                            },
+                            child: CustomCard(
+                              elevation: 10,
+                              child: SizedBox(
+                                width: width * 0.5,
+                                height: height * 0.3,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: height * 0.16,
+                                      width: width * 0.50,
+                                      decoration: BoxDecoration(
+                                        color: greycolor,
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                '${apibaseUrl.baseUrl}/products/${findbycategory[index].image[0]}'),
+                                            fit: BoxFit.cover),
+                                      ),
+                                    ),
+                                    kheight10,
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 1),
+                                      child: Text(
+                                        findbycategory[index].description,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                    kheight10,
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "₹ ${findbycategory[index].price.toString()}",
+                                              style: const TextStyle(
+                                                fontSize: 21,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                          Text(
+                                            findbycategory[index].rating,
+                                            style:
+                                                const TextStyle(fontSize: 15),
+                                          ),
+                                          const Icon(
+                                            Icons.star,
+                                            color: Colors.amber,
+                                          )
+                                        ],
                                       ),
-                                      Text(
-                                        "${productList[index].rating.toString()}",
-                                        style: const TextStyle(fontSize: 15),
-                                      ),
-                                      const Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
-                                      )
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    Positioned(
-                      left: width * 0.346,
-                      top: height * 0.01,
-                      child: GetBuilder<WishListController>(
-                        builder: (controller) => IconButton(
-                          onPressed: () {
-                            wishlistcontroller
-                                .addOrRemoveFromWishlist(productList[index].id);
-                          },
-                          icon: wishlistcontroller.wishList.isEmpty
-                              ? const Icon(Icons.favorite_border_outlined)
-                              : Icon(
-                                  wishlistcontroller.wishList
-                                          .contains(productList[index].id)
-                                      ? Icons.favorite
-                                      : Icons.favorite_border_outlined,
-                                  color: wishlistcontroller.wishList.isEmpty
-                                      ? kblackcolor
-                                      : wishlistcontroller.wishList
-                                              .contains(productList[index].id)
+                        Positioned(
+                          left: width * 0.346,
+                          top: height * 0.01,
+                          child: GetBuilder<WishListController>(
+                            builder: (controller) => IconButton(
+                              onPressed: () {
+                                wishlistcontroller.addOrRemoveFromWishlist(
+                                    findbycategory[index].id);
+                              },
+                              icon: wishlistcontroller.wishList.isEmpty
+                                  ? const Icon(Icons.favorite_border_outlined)
+                                  : Icon(
+                                      wishlistcontroller.wishList.contains(
+                                              findbycategory[index].id)
+                                          ? Icons.favorite
+                                          : Icons.favorite_border_outlined,
+                                      color: wishlistcontroller.wishList.isEmpty
                                           ? kblackcolor
-                                          : Colors.black45,
-                                ),
+                                          : wishlistcontroller.wishList
+                                                  .contains(
+                                                      findbycategory[index].id)
+                                              ? kblackcolor
+                                              : Colors.black45,
+                                    ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
       ),
     );
   }
