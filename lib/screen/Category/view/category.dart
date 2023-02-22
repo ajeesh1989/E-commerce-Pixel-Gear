@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/category_grid.dart';
+import 'package:pixel_gear/screen/allproducts/all_products.dart';
 
 class CategoryPage extends StatelessWidget {
   CategoryPage({super.key});
@@ -35,14 +38,29 @@ class CategoryPage extends StatelessWidget {
                   crossAxisSpacing: 4.0,
                   mainAxisSpacing: 4.0),
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Card(
-                    elevation: 15,
-                    child: CategoryGrid(
-                      apibaseurl: apibaseurl,
-                      homeController: categoryitems,
-                      index: index,
+                return InkWell(
+                  onTap: () {
+                    log('hello');
+                    Get.to(() => AllProductsPage(
+                        categoryid: categoryitems.categoryList[index].id));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        log('hello');
+                        Get.to(() => AllProductsPage(
+                              categoryid: categoryitems.categoryList[index].id,
+                            ));
+                      },
+                      child: Card(
+                        elevation: 15,
+                        child: CategoryGrid(
+                          apibaseurl: apibaseurl,
+                          homeController: categoryitems,
+                          index: index,
+                        ),
+                      ),
                     ),
                   ),
                 );

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/api/api_endurl.dart';
@@ -19,6 +21,7 @@ class CategoryService {
         final List<CategoryModel> categorylist = (response.data as List)
             .map((e) => CategoryModel.fromJson(e))
             .toList();
+        log(categorylist[0].id);
         return categorylist;
       } else {
         return null;

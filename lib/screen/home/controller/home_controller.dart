@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:pixel_gear/screen/Home/model/carousalmodel.dart';
 import 'package:pixel_gear/screen/Home/model/categorymodel.dart';
@@ -32,6 +34,7 @@ class HomeController extends GetxController {
           update();
           isLoading = false;
           update();
+          log(categoryList[0].id);
         } else {
           isLoading = false;
           update();
@@ -46,6 +49,13 @@ class HomeController extends GetxController {
 
   ProductModel findById(String id) {
     return productList.firstWhere((element) => element.id == id);
+  }
+
+  List<ProductModel> findByCategoryId(String categoryId) {
+    log('findByCategoryid');
+    return productList
+        .where((element) => element.category.contains(categoryId))
+        .toList();
   }
 
   void getACarousal() async {

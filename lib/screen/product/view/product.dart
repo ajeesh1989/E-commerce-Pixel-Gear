@@ -52,7 +52,10 @@ class ProductScreen extends GetView {
             onPressed: () {
               Get.to(() => WishlistPage(height: height, width: width));
             },
-            child: Text('Wishlist'),
+            child: const Text(
+              'Wishlist',
+              style: TextStyle(color: kblackcolor),
+            ),
           )
         ],
         leading: IconButton(
@@ -113,17 +116,8 @@ class ProductScreen extends GetView {
                 ),
               ),
               kheight10,
-              Row(
+              Column(
                 children: [
-                  Text(
-                    "₹${findproduct.price.toString()}",
-                    style: const TextStyle(
-                      fontSize: 30,
-                      color: kblackcolor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  kwidth,
                   Row(
                     children: [
                       Text(
@@ -133,7 +127,35 @@ class ProductScreen extends GetView {
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
+                      kwidth10,
+                      Text(
+                        "₹${findproduct.price - findproduct.discountPrice}",
+                        style: const TextStyle(
+                          fontSize: 26,
+                          color: kblackcolor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
+                  ),
+                ],
+              ),
+              kheight05,
+              Row(
+                children: [
+                  const Text(
+                    'M.R.P. :',
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  kwidth10,
+                  Text(
+                    "₹${findproduct.price.toString()}",
+                    style: const TextStyle(
+                      fontSize: 22,
+                      color: greycolor,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.lineThrough,
+                    ),
                   ),
                 ],
               ),
@@ -147,6 +169,7 @@ class ProductScreen extends GetView {
         ),
       ),
       bottomNavigationBar: ProductviewBottomNavwidget(
+        productmodel: findproduct,
         height: height,
         width: width,
         size: findproduct.size[0],

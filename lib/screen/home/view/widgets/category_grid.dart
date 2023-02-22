@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
+import 'package:pixel_gear/screen/allproducts/all_products.dart';
 
 class CategoryGrid extends StatelessWidget {
   const CategoryGrid({
@@ -17,11 +21,14 @@ class CategoryGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeController2 = Get.put(HomeController());
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          // Get.to(page);
+          log('message');
+          log(homeController2.categoryList[index].id);
+          Get.to(() => AllProductsPage(categoryid: '63e9d346559f90a78c9f891c'));
         },
         child: Column(
           children: [
@@ -29,12 +36,6 @@ class CategoryGrid extends StatelessWidget {
                 height: 80,
                 fit: BoxFit.fill,
                 '${apibaseurl.baseUrl}/category/${homeController.categoryList[index].image}'),
-            // CircleAvatar(
-            //   radius: 40,
-            //   backgroundColor: kwhitecolor,
-            //   backgroundImage: NetworkImage(
-            //       '${apibaseurl.baseUrl}/category/${homeController.categoryList[index].image}'),
-            // ),
             const SizedBox(
               height: 4,
             ),

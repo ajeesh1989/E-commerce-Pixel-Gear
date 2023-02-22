@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Cart/controller/cart_controller.dart';
 import 'package:pixel_gear/screen/Cart/view/cart.dart';
+import 'package:pixel_gear/screen/Home/model/productmodel.dart';
 
 class ProductviewBottomNavwidget extends StatelessWidget {
-  const ProductviewBottomNavwidget({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.size,
-    required this.id,
-  });
+  ProductviewBottomNavwidget(
+      {super.key,
+      required this.height,
+      required this.width,
+      required this.size,
+      required this.id,
+      required this.productmodel});
 
   final double height;
   final double width;
   final String size;
   final String id;
+  final apibaseUrl = ApiBaseUrl();
+  final ProductModel productmodel;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +44,130 @@ class ProductviewBottomNavwidget extends StatelessWidget {
             ),
             onPressed: () {
               cartC.addToCart(id, size);
+              Get.bottomSheet(
+                Container(
+                  height: 500,
+                  color: Color.fromARGB(255, 225, 231, 234),
+                  child: Column(
+                    children: [
+                      kheight05,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.done,
+                            color: Colors.green,
+                          ),
+                          kwidth10,
+                          Text(
+                            'Hooray! Your item added to the cart',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        productmodel.name,
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ),
+                      kheight10,
+                      Container(
+                        height: Get.height * 0.475,
+                        color: kwhitecolor,
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                      '${apibaseUrl.baseUrl}/products/${productmodel.image[0]}'),
+                                ),
+                              ),
+                              height: height * 0.23,
+                              width: width * 0.95,
+                            ),
+                            kheight05,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8),
+                              child: Text(
+                                '${productmodel.description}.',
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                            ),
+                            kheight10,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8),
+                              child: Positioned(
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      "M.R.P:",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16),
+                                    ),
+                                    kwidth10,
+                                    Text(
+                                      '${productmodel.price}',
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w400,
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: greycolor),
+                                    ),
+                                    kwidth10,
+                                    Text(
+                                      '₹${productmodel.price - productmodel.discountPrice}',
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green),
+                                    ),
+                                    Text(
+                                      ' (offer ${productmodel.offer}%)',
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            kheight10,
+                            Container(
+                              color: Color.fromARGB(255, 225, 231, 234),
+                              width: Get.width,
+                              height: Get.height * 0.05,
+                              child: TextButton(
+                                  onPressed: () {
+                                    Get.to(MyCart(
+                                      height: height,
+                                      width: width,
+                                    ));
+                                  },
+                                  child: Text(
+                                    'Go to Cart',
+                                    style: TextStyle(color: kblackcolor),
+                                  )),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                barrierColor: Colors.grey.shade100,
+                isDismissible: true,
+                // shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(35),
+                //     side: BorderSide(width: 5, color: Colors.black)),
+                enableDrag: false,
+              );
             },
             icon: const Icon(
               Icons.shopping_cart,

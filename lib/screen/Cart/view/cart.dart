@@ -5,6 +5,8 @@ import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/BottomNavBar/View/bottomnav.dart';
 import 'package:pixel_gear/screen/Cart/controller/cart_controller.dart';
+import 'package:pixel_gear/screen/Cart/widget/cart_bottom.dart';
+import 'package:pixel_gear/screen/Cart/widget/cart_gif.dart';
 
 class MyCart extends StatelessWidget {
   MyCart({super.key, required this.height, required this.width});
@@ -37,47 +39,7 @@ class MyCart extends StatelessWidget {
       ),
       body: GetBuilder<CartController>(
         builder: (controller) => controller.cartItemsId.isEmpty
-            ? Center(
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'lib/images/cartempty.jpg',
-                      scale: 2,
-                    ),
-                    const Text(
-                      'Your cart is empty!',
-                      style: TextStyle(fontSize: 20, color: kblackcolor),
-                    ),
-                    kheight10,
-                    const Padding(
-                      padding: EdgeInsets.only(left: 40, right: 40),
-                      child: Text(
-                        'Looks like you have not added anything to your cart. Go ahead and explore top cameras',
-                        style: TextStyle(fontSize: 16, color: greycolor),
-                      ),
-                    ),
-                    kheight20,
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(BottomNavPage());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.grey.shade300,
-                        ),
-                        height: height * 0.035,
-                        width: width * 0.4,
-                        child: const Center(
-                            child: Text(
-                          'Back to pixel gear',
-                          style: TextStyle(fontSize: 17),
-                        )),
-                      ),
-                    )
-                  ],
-                ),
-              )
+            ? CartGif(height: height, width: width)
             : ListView.builder(
                 itemCount: cartC.cartList!.products.length,
                 itemBuilder: (context, index) => SingleChildScrollView(
@@ -127,16 +89,43 @@ class MyCart extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
+                                          'M.R.P:',
+                                          style: TextStyle(fontSize: 13),
+                                        ),
+                                        Text(
                                           controller.cartList!.products[index]
                                               .product.price
                                               .toString(),
                                           style: const TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              decoration:
+                                                  TextDecoration.lineThrough),
                                         ),
-                                        kwidth,
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          ' ${controller.cartList!.products[index].product.price - controller.cartList!.products[index].product.discountPrice}',
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.green),
+                                        ),
                                       ],
+                                    ),
+                                    kheight05,
+                                    Text(
+                                      // ignore: prefer_interpolation_to_compose_strings
+                                      "Offer" +
+                                          controller.cartList!.products[index]
+                                              .product.offer
+                                              .toString() +
+                                          '% off',
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green),
                                     ),
                                     kheight10,
                                     const Text(
@@ -164,35 +153,36 @@ class MyCart extends StatelessWidget {
                                 children: [
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 238, 237, 237),
-                                        minimumSize:
-                                            Size(width * 0.05, height * 0.05)),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 225, 231, 234),
+                                      minimumSize:
+                                          Size(width * 0.05, height * 0.05),
+                                    ),
                                     onPressed: () {
                                       controller.incrementDecrementQty(
-                                        1,
+                                        -1,
                                         controller.cartList!.products[index]
                                             .product.id,
                                         controller
                                             .cartList!.products[index].qty,
                                         controller.cartList!.products[index]
-                                            .product.size
+                                            .product.size[0]
                                             .toString(),
                                       );
                                     },
                                     child: const Icon(
-                                      Icons.delete_outline,
+                                      Icons.remove,
                                       color: kblackcolor,
                                     ),
                                   ),
                                   Container(
                                     width: width * 0.13,
                                     // height: height * 0.05,
-                                    color: const Color.fromARGB(
-                                        255, 223, 220, 220),
+                                    color: Color.fromARGB(255, 225, 231, 234),
+
                                     child: Center(
                                         child: Text(
                                       controller.cartList!.products[index].qty
@@ -203,44 +193,46 @@ class MyCart extends StatelessWidget {
                                     )),
                                   ),
                                   ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          backgroundColor: const Color.fromARGB(
-                                              255, 238, 237, 237),
-                                          minimumSize: Size(
-                                              width * 0.05, height * 0.05)),
-                                      onPressed: () {
-                                        controller.incrementDecrementQty(
-                                          1,
-                                          controller.cartList!.products[index]
-                                              .product.id,
-                                          controller
-                                              .cartList!.products[index].qty,
-                                          controller.cartList!.products[index]
-                                              .product.size
-                                              .toString(),
-                                        );
-                                      },
-                                      child: const Icon(
-                                        Icons.add,
-                                        color: kblackcolor,
-                                      ))
+                                    style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        backgroundColor:
+                                            Color.fromARGB(255, 225, 231, 234),
+                                        minimumSize:
+                                            Size(width * 0.05, height * 0.05)),
+                                    onPressed: () {
+                                      controller.incrementDecrementQty(
+                                        1,
+                                        controller.cartList!.products[index]
+                                            .product.id,
+                                        controller
+                                            .cartList!.products[index].qty,
+                                        controller.cartList!.products[index]
+                                            .product.size[0]
+                                            .toString(),
+                                      );
+                                    },
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: kblackcolor,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
                             kwidth10,
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  backgroundColor: kwhitecolor,
-                                  minimumSize: Size(width * 0.2, height * 0.05),
-                                  side: const BorderSide(
-                                    width: 1,
-                                    color: greycolor,
-                                  )),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                backgroundColor: kwhitecolor,
+                                minimumSize: Size(width * 0.2, height * 0.05),
+                                side: const BorderSide(
+                                  width: 1,
+                                  color: greycolor,
+                                ),
+                              ),
                               onPressed: () {
                                 controller.removeCart(controller
                                     .cartList!.products[index].product.id);
@@ -261,42 +253,7 @@ class MyCart extends StatelessWidget {
       bottomNavigationBar: GetBuilder<CartController>(
         builder: (controller) => controller.cartItemsId.isEmpty
             ? const Text('')
-            : Container(
-                height: height * 0.1,
-                width: double.infinity,
-                color: Colors.grey.shade300,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Text(
-                      'total',
-                      style: TextStyle(color: kblackcolor, fontSize: 18),
-                    ),
-                    SizedBox(
-                      width: width * 0.1,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(width * 0.30, height * 0.06),
-                        backgroundColor: Colors.grey.shade800,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'Check Out',
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: kwhitecolor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            : CartBottom(height: height, width: width),
       ),
     );
   }

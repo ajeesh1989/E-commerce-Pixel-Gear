@@ -58,12 +58,13 @@ class CartController extends GetxController {
         getCart();
         if (value == "product added to cart successfully") {
           Get.snackbar(
+            backgroundColor: Colors.black,
             "Added",
             "Product Added To Cart Successfully",
-            colorText: Colors.green,
+            colorText: kwhitecolor,
             icon: const Icon(
               Icons.add_alert_rounded,
-              color: kblackcolor,
+              color: kwhitecolor,
             ),
           );
         }
@@ -80,14 +81,15 @@ class CartController extends GetxController {
         if (value != null) {
           getCart();
           log(totalSave.toString());
-          Get.back();
+          // Get.back();
           Get.snackbar(
+            backgroundColor: Colors.black,
             "Remove",
             "Product removed from cart successfully",
-            colorText: redcolor,
+            colorText: kwhitecolor,
             icon: const Icon(
               Icons.remove_circle,
-              color: kblackcolor,
+              color: kwhitecolor,
             ),
           );
           update();
@@ -111,10 +113,11 @@ class CartController extends GetxController {
       int qty, String productId, int productQuantity, String size) async {
     final AddCartModel model = AddCartModel(
       size: size.toString(),
-      quantity: quantity,
+      quantity: qty,
       productId: productId,
     );
-    if (qty == 1 && productQuantity >= 1) {
+    log(qty.toString());
+    if (qty == 1 && productQuantity >= 1 || qty == -1 && productQuantity > 1) {
       await CartService().addToCart(model).then(
         (value) async {
           if (value != null) {
@@ -140,6 +143,8 @@ class CartController extends GetxController {
           }
         },
       );
+    } else if (qty == -1 && productQuantity == 1) {
+      removeCart(productId);
     }
   }
 }
