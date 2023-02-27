@@ -16,6 +16,17 @@ class SignInController extends GetxController {
 
   SignInService signinsservice = SignInService();
   bool isLoading = false;
+
+  logoutLaunch() {
+    isLoading = false;
+    update();
+    emailController.clear();
+    update();
+
+    passwordController.clear();
+    update();
+  }
+
   void signIn() {
     isLoading = true;
     update();

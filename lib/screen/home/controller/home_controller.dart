@@ -98,23 +98,6 @@ class HomeController extends GetxController {
   }
 
   TextEditingController searchController = TextEditingController();
-  // void search(String keyboard) {
-  //   List<ProductModel> results = [];
-  //   if (keyboard.isEmpty) {
-  //     results = productList;
-  //   } else {
-  //     results = productList
-  //         .where(
-  //           (element) => element.name.toLowerCase().contains(
-  //                 keyboard.toLowerCase(),
-  //               ),
-  //         )
-  //         .toList();
-  //   }
-
-  //   searchResult = results;
-  //   update();
-  // }
 
   void smoothIndicator(index) {
     activeIndex = index;

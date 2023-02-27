@@ -110,7 +110,10 @@ class DrawerWidget extends GetView {
                       ),
                       title: GestureDetector(
                           onTap: () {
-                            Get.to(MyAddress());
+                            Get.to(MyAddress(
+                              height: height,
+                              width: width,
+                            ));
                           },
                           child: const Text("My Address")),
                       onTap: () {},

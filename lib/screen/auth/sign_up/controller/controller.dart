@@ -18,6 +18,16 @@ class SignUpController extends GetxController {
   bool isLoading = false;
   final signups = SignUpService();
 
+  logoutLaunch() {
+    isLoading = false;
+    update();
+    emailController.clear();
+    update();
+
+    passwordController.clear();
+    update();
+  }
+
   FlutterSecureStorage storage = const FlutterSecureStorage();
   Future<void> addUser() async {
     isLoading = true;
