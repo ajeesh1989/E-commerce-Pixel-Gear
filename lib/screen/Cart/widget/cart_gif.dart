@@ -44,15 +44,16 @@ class CartGif extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Color.fromARGB(255, 225, 231, 234),
+                color: const Color.fromARGB(255, 225, 231, 234),
               ),
               height: height * 0.035,
               width: width * 0.4,
               child: const Center(
-                  child: Text(
-                'Back to pixel gear',
-                style: TextStyle(fontSize: 17),
-              )),
+                child: Text(
+                  'Back to pixel gear',
+                  style: TextStyle(fontSize: 17),
+                ),
+              ),
             ),
           )
         ],

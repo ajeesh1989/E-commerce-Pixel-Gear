@@ -26,7 +26,7 @@ class CartController extends GetxController {
   void getCart() async {
     isLoading = true;
     update();
-    await service.getCart().then((value) {
+    await service.servicegetCart().then((value) {
       if (value != null) {
         cartList = value;
         update();
@@ -86,7 +86,7 @@ class CartController extends GetxController {
           // Get.back();
           Get.snackbar(
             backgroundColor: Colors.black,
-            "Remove",
+            "Removed",
             "Product removed from cart successfully",
             colorText: kwhitecolor,
             icon: const Icon(
@@ -123,7 +123,7 @@ class CartController extends GetxController {
       await CartService().addToCart(model).then(
         (value) async {
           if (value != null) {
-            await CartService().getCart().then(
+            await CartService().servicegetCart().then(
               (value) {
                 if (value != null) {
                   cartList = value;

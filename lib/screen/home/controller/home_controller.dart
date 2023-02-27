@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/screen/Home/model/carousalmodel.dart';
 import 'package:pixel_gear/screen/Home/model/categorymodel.dart';
@@ -13,10 +14,12 @@ class HomeController extends GetxController {
     getCategory();
     getACarousal();
     getProduct();
+    searchs('');
   }
   List<CategoryModel> categoryList = [];
   List<CarousalModel> carousalList = [];
   List<ProductModel> productList = [];
+  List<ProductModel> searchResult = [];
 
   int activeIndex = 0;
   bool isLoading = false;
@@ -94,8 +97,51 @@ class HomeController extends GetxController {
     });
   }
 
+  TextEditingController searchController = TextEditingController();
+  // void search(String keyboard) {
+  //   List<ProductModel> results = [];
+  //   if (keyboard.isEmpty) {
+  //     results = productList;
+  //   } else {
+  //     results = productList
+  //         .where(
+  //           (element) => element.name.toLowerCase().contains(
+  //                 keyboard.toLowerCase(),
+  //               ),
+  //         )
+  //         .toList();
+  //   }
+
+  //   searchResult = results;
+  //   update();
+  // }
+
   void smoothIndicator(index) {
     activeIndex = index;
+    update();
+  }
+
+  void searchs(String keyboard) {
+    isLoading = true;
+    update();
+    List<ProductModel> results = [];
+    if (keyboard.isEmpty) {
+      results = productList;
+    } else {
+      results = productList
+          .where(
+            (element) => element.name.toLowerCase().contains(
+                  keyboard.toLowerCase(),
+                ),
+          )
+          .toList();
+      update();
+    }
+    // log(results[0].name);
+
+    searchResult = results;
+    update();
+    isLoading = false;
     update();
   }
 }

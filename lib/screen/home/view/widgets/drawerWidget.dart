@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Account/Controller/account_controller.dart';
+import 'package:pixel_gear/screen/Address/address_view.dart';
 import 'package:pixel_gear/screen/Cart/view/cart.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
@@ -101,6 +102,18 @@ class DrawerWidget extends GetView {
                       onTap: () {
                         //action on press
                       },
+                    ),
+                    ListTile(
+                      leading: const Icon(
+                        Icons.navigation_outlined,
+                        color: kblackcolor,
+                      ),
+                      title: GestureDetector(
+                          onTap: () {
+                            Get.to(MyAddress());
+                          },
+                          child: const Text("My Address")),
+                      onTap: () {},
                     ),
                   ],
                 ),

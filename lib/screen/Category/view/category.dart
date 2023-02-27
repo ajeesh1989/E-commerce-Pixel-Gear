@@ -8,7 +8,7 @@ import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/category_grid.dart';
 import 'package:pixel_gear/screen/allproducts/all_products.dart';
 
-class CategoryPage extends StatelessWidget {
+class CategoryPage extends GetView {
   CategoryPage({super.key});
 
   double height = Get.size.height;
@@ -38,39 +38,21 @@ class CategoryPage extends StatelessWidget {
                   crossAxisSpacing: 4.0,
                   mainAxisSpacing: 4.0),
               itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    // log('hello');
-                    // Get.to(() => AllProductsPage(
-                    //     categoryid: categoryitems.categoryList[index].id));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        // log('hello');
-                        // Get.to(() => AllProductsPage(
-                        //       categoryid: categoryitems.categoryList[index].id,
-                        //     ));
-                      },
-                      child: Card(
-                        elevation: 15,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              log('message');
-                              log(categoryitems.categoryList.toString(),
-                                  name: 'category id');
-                              Get.to(() => AllProductsPage(
-                                  categoryid:
-                                      categoryitems.categoryList[index].id));
-                            },
-                            child: Image.network(
-                                fit: BoxFit.fill,
-                                '${apibaseurl.baseUrl}/category/${categoryitems.categoryList[index].image}'),
-                          ),
-                        ),
+                return Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Card(
+                    elevation: 15,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: () {
+                          Get.to(() => AllProductsPage(
+                              categoryid:
+                                  categoryitems.categoryList[index].id));
+                        },
+                        child: Image.network(
+                            fit: BoxFit.fill,
+                            '${apibaseurl.baseUrl}/category/${categoryitems.categoryList[index].image}'),
                       ),
                     ),
                   ),

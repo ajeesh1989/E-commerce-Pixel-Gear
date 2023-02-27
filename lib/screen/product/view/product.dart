@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/product/controller/productController.dart';
 
+// ignore: must_be_immutable
 class ProductScreen extends GetView {
   ProductScreen({
     super.key,

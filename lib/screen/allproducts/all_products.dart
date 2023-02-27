@@ -1,17 +1,12 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_custom_cards/flutter_custom_cards.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
-import 'package:pixel_gear/screen/Home/model/productmodel.dart';
-import 'package:pixel_gear/screen/Home/view/widgets/home_grid.dart';
 import 'package:pixel_gear/screen/Wishlist/controller/wishlist_controller.dart';
-import 'package:pixel_gear/screen/product/controller/productController.dart';
+import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
 import 'package:pixel_gear/screen/product/view/product.dart';
 
 class AllProductsPage extends StatelessWidget {
@@ -46,6 +41,15 @@ class AllProductsPage extends StatelessWidget {
           'All Products',
           style: TextStyle(color: kblackcolor),
         ),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Get.to(
+                  () => WishlistPage(height: height, width: width),
+                );
+              },
+              child: Text('Wishlist'))
+        ],
       ),
       body: GetBuilder<HomeController>(
         builder: (controller) => categoryid.isEmpty

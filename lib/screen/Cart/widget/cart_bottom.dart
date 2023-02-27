@@ -24,10 +24,23 @@ class CartBottom extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            "Total ${cartC.totalSave}",
-            style: TextStyle(color: kblackcolor, fontSize: 18),
+          Text.rich(
+            TextSpan(
+              children: [
+                const TextSpan(text: 'Total ', style: TextStyle(fontSize: 18)),
+                TextSpan(
+                  text: cartC.totalSave.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ],
+            ),
           ),
+          // Text(
+          //   "Total ${cartC.totalSave}",
+          //   style: TextStyle(
+          //       color: kblackcolor, fontSize: 18, fontWeight: FontWeight.w500),
+          // ),
           SizedBox(
             width: width * 0.1,
           ),

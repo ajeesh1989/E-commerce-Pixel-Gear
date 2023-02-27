@@ -89,7 +89,7 @@ class WishlistPage extends GetView<WishListController> {
                     itemCount: wishListController.wishList.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 1 / 1.45,
+                      childAspectRatio: 1 / 1.55,
                       crossAxisCount: 2,
                     ),
                     itemBuilder: (BuildContext ctx, int index) {
@@ -111,7 +111,7 @@ class WishlistPage extends GetView<WishListController> {
                               child: CustomCard(
                                 elevation: 10,
                                 child: SizedBox(
-                                  width: width * 0.5,
+                                  width: width * 0.6,
                                   height: height * 0.5,
                                   child: Column(
                                     children: [
@@ -151,9 +151,11 @@ class WishlistPage extends GetView<WishListController> {
                                           children: [
                                             Expanded(
                                               child: Text(
-                                                "₹ ${wishListController.wishlistmodel!.products[index].product.price - wishListController.wishlistmodel!.products[index].product.discountPrice}",
+                                                "₹${wishListController.wishlistmodel!.products[index].product.price - wishListController.wishlistmodel!.products[index].product.discountPrice}",
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
                                                 style: const TextStyle(
-                                                  fontSize: 21,
+                                                  fontSize: 17,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
@@ -178,8 +180,23 @@ class WishlistPage extends GetView<WishListController> {
                                       const SizedBox(
                                         height: 7,
                                       ),
-                                      GestureDetector(
-                                        onTap: () {
+                                      TextButton(
+                                        style: ButtonStyle(
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
+                                              side: const BorderSide(
+                                                  color: greycolor),
+                                            ),
+                                          ),
+                                          minimumSize:
+                                              MaterialStateProperty.all(
+                                            Size(width * 0.3, height * 0.03),
+                                          ),
+                                        ),
+                                        onPressed: () {
                                           cartC.addToCart(
                                               wishListController.wishlistmodel!
                                                   .products[index].product.id,
@@ -188,11 +205,14 @@ class WishlistPage extends GetView<WishListController> {
                                                   .products[index]
                                                   .product
                                                   .size[0]);
+                                          Get.to(() => MyCart(
+                                              height: height, width: width));
                                         },
                                         child: const Text(
                                           'Add to cart',
                                           style: TextStyle(
-                                              color: Colors.blue, fontSize: 15),
+                                              color: Colors.blueGrey,
+                                              fontSize: 15),
                                         ),
                                       )
                                     ],

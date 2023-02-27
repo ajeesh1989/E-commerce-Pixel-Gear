@@ -35,7 +35,7 @@ class ProductviewBottomNavwidget extends StatelessWidget {
         children: [
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(width * 0.35, height * 0.08),
+              minimumSize: Size(width * 0.35, height * 0.06),
               maximumSize: Size.fromHeight(height * 0.1),
               backgroundColor: Colors.grey.shade800,
               elevation: 0,
@@ -47,7 +47,7 @@ class ProductviewBottomNavwidget extends StatelessWidget {
               Get.bottomSheet(
                 Container(
                   height: 500,
-                  color: Color.fromARGB(255, 225, 231, 234),
+                  color: const Color.fromARGB(255, 225, 231, 234),
                   child: Column(
                     children: [
                       kheight05,
@@ -140,17 +140,19 @@ class ProductviewBottomNavwidget extends StatelessWidget {
                             ),
                             kheight10,
                             Container(
-                              color: Color.fromARGB(255, 225, 231, 234),
+                              color: const Color.fromARGB(255, 225, 231, 234),
                               width: Get.width,
                               height: Get.height * 0.05,
                               child: TextButton(
                                   onPressed: () {
-                                    Get.to(MyCart(
-                                      height: height,
-                                      width: width,
-                                    ));
+                                    Get.off(
+                                      () => MyCart(
+                                        height: height,
+                                        width: width,
+                                      ),
+                                    );
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Go to Cart',
                                     style: TextStyle(color: kblackcolor),
                                   )),
@@ -187,7 +189,7 @@ class ProductviewBottomNavwidget extends StatelessWidget {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(width * 0.35, height * 0.08),
+              minimumSize: Size(width * 0.35, height * 0.06),
               backgroundColor: Colors.grey.shade800,
               elevation: 0,
               shape: RoundedRectangleBorder(

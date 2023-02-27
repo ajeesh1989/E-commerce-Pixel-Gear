@@ -41,27 +41,29 @@ class CarousalWidget extends GetView {
           scrollDirection: Axis.horizontal,
         ),
         itemBuilder: (BuildContext context, int index, int realIndex) {
-          return Stack(
-            children: [
-              Container(
-                width: width,
-                height: height * 0.28,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: kblackcolor,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        "${apibaseUrl.baseUrl}/carousals/${homeconntroller.carousalList[index].image}"),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              // Text(
-              //   homeconntroller.carousalList[index].offer,
-              //   style: const TextStyle(fontSize: 30, color: kwhitecolor),
-              // )
-            ],
-          );
+          return homeconntroller.carousalList.isEmpty
+              ? Text('')
+              : Stack(
+                  children: [
+                    Container(
+                      width: width,
+                      height: height * 0.28,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: kblackcolor,
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              "${apibaseUrl.baseUrl}/carousals/${homeconntroller.carousalList[index].image}"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    // Text(
+                    //   homeconntroller.carousalList[index].offer,
+                    //   style: const TextStyle(fontSize: 30, color: kwhitecolor),
+                    // )
+                  ],
+                );
         },
         itemCount: homeconntroller.carousalList.length);
   }

@@ -13,6 +13,7 @@ import '../../../util/api_intercepter/api_intercepter.dart';
 class CartService {
   final apibaseUrl = ApiBaseUrl();
   final apiendUrl = ApiEndsUrl();
+
   Future<String?> addToCart(
     AddCartModel model,
   ) async {
@@ -35,7 +36,7 @@ class CartService {
     return null;
   }
 
-  Future<GetCartModel?> getCart() async {
+  Future<GetCartModel?> servicegetCart() async {
     Dio dio = await ApiInterceptor().getApiUser();
 
     try {

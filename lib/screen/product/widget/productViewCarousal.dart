@@ -42,6 +42,7 @@ class ProductviewCarousalWidget extends StatelessWidget {
             itemBuilder: (BuildContext context, int index, int realindex) {
               return Container(
                 decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
                   image: DecorationImage(
                     image: NetworkImage(
                         '${apibaseUrl.baseUrl}/products/${productmodel.image[index]}'),
@@ -103,8 +104,8 @@ class ProductviewCarousalWidget extends StatelessWidget {
               effect: const WormEffect(
                   dotHeight: 10,
                   dotWidth: 10,
-                  activeDotColor: Color.fromARGB(137, 245, 241, 241),
-                  dotColor: Color.fromARGB(59, 240, 227, 227)),
+                  activeDotColor: Color.fromARGB(136, 255, 252, 252),
+                  dotColor: Color.fromARGB(57, 115, 107, 107)),
             ),
           ),
         ],

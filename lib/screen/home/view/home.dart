@@ -8,11 +8,9 @@ import 'package:pixel_gear/screen/Home/view/shimmers/carousalshimmer.dart';
 import 'package:pixel_gear/screen/Home/view/shimmers/categoryshimmer.dart';
 import 'package:pixel_gear/screen/Home/view/shimmers/productshimmer.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/carousal_padding.dart';
-import 'package:pixel_gear/screen/Home/view/widgets/carousal_page.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/category_items.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/drawerWidget.dart';
 import 'package:pixel_gear/screen/Home/view/widgets/home_grid.dart';
-import 'package:pixel_gear/util/circularProgressWidget/circular_progress_widget.dart';
 
 // ignore: must_be_immutable
 class HomePage extends GetView<HomeController> {

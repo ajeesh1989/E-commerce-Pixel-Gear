@@ -20,7 +20,7 @@ class BottomNavPage extends GetView<BottomNavigationController> {
     HomePage(),
     CategoryPage(),
     // AllProductsPage(),
-    const SearchPage(),
+    SearchPage(),
     WishlistPage(
       height: Get.height,
       width: Get.width,
