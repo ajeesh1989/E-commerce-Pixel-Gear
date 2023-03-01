@@ -33,14 +33,17 @@ class TextFromFieldWidget extends StatelessWidget {
       },
       obscureText: obscureText,
       decoration: InputDecoration(
-        suffixIcon: IconButton(
+        prefixIcon: IconButton(
           onPressed: () {},
           icon: icon,
-          color: kblackcolor,
+          color: greycolor,
         ),
-        label: Text(
-          text,
-          style: const TextStyle(color: kblackcolor),
+        label: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Text(
+            text,
+            style: const TextStyle(color: kblackcolor, fontSize: 15),
+          ),
         ),
         focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.grey),

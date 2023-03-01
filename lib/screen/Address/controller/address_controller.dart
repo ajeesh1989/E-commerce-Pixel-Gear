@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -96,6 +97,11 @@ class AcountController extends GetxController {
 
         landmarkC.clear();
         update();
+        Get.snackbar(
+          "Added", "Address added successfully",
+          backgroundColor: Colors.black87, colorText: kwhitecolor,
+          // snackPosition: SnackPosition.BOTTOM,
+        );
       } else {
         isLoading = false;
         update();
@@ -121,6 +127,8 @@ class AcountController extends GetxController {
         return null;
       }
     });
+    isLoading = false;
+    update();
     return null;
   }
 
@@ -131,11 +139,11 @@ class AcountController extends GetxController {
     await AddressService().deleteAddress(addressId).then((value) {
       if (value != null) {
         getAllAddress();
-        Get.back();
+        // Get.back();
 
         Get.snackbar(
           "Deleted", "Address removed successfully",
-          backgroundColor: kblackcolor, colorText: redcolor,
+          backgroundColor: Colors.black87, colorText: kwhitecolor,
           // snackPosition: SnackPosition.BOTTOM,
         );
         isLoading = false;

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/BottomNavBar/View/bottomnav.dart';
 import 'package:pixel_gear/screen/Cart/controller/cart_controller.dart';
+import 'package:pixel_gear/screen/Ordersummary/view/oderssummary.dart';
 
 class CartBottom extends StatelessWidget {
   CartBottom({
@@ -53,7 +54,11 @@ class CartBottom extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const OrderSummery(
+                    page: 0,
+                  ));
+            },
             child: const Text(
               'Check Out',
               style: TextStyle(

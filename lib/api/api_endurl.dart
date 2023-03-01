@@ -13,4 +13,6 @@ class ApiEndsUrl {
   String wishlist = '/api/v1/wishlist';
   String cart = '/api/v1/cart';
   String address = '/api/v1/address';
+  String summery = '/api/v1/summary';
+  String order = '/api/v1/orders';
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/screen/Account/Controller/account_controller.dart';
 
+import '../../../core/colors.dart';
 import '../../Address/controller/address_controller.dart';
 import '../../Address/model/get_addressmodel.dart';
 import '../model/edit_model.dart';
@@ -32,6 +34,11 @@ class EditContoller extends GetxController {
   bool isLoading = false;
   void updateAddress(String addressId) async {
     isLoading = true;
+    Get.snackbar(
+      "Updated", "Address updated successfully",
+      backgroundColor: Colors.black87, colorText: kwhitecolor,
+      // snackPosition: SnackPosition.BOTTOM,
+    );
     update();
     final EditAddressModel model = EditAddressModel(
       title: tittleC.text,

@@ -22,6 +22,7 @@ class CartController extends GetxController {
   int totalproductCount = 1;
   int? totalSave;
   CartService service = CartService();
+  List<ProductElement> reversedProcuct = [];
 
   void getCart() async {
     isLoading = true;
@@ -36,6 +37,7 @@ class CartController extends GetxController {
         log(totalSave.toString(), name: 'get total save');
         totalProductCount();
         update();
+        reversedProcuct = List.from(cartList!.products.reversed);
         isLoading = false;
         update();
       } else {

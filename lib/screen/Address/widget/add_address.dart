@@ -1,52 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
-import 'package:pixel_gear/screen/Address/address_view.dart';
-import 'package:pixel_gear/screen/Address/model/get_addressmodel.dart';
+import 'package:pixel_gear/util/textfield.dart';
 
-import '../../../util/textfield.dart';
-import '../../Address/controller/address_controller.dart';
-import '../controller/edit_controller.dart';
+import '../controller/address_controller.dart';
 
-class EditAccountPage extends StatelessWidget {
-  EditAccountPage(
-      {super.key,
-      required this.width,
-      required this.height,
-      required this.model});
-  final GetAddressModel model;
+class AddAddressPage extends StatelessWidget {
+  AddAddressPage({
+    super.key,
+    required this.width,
+    required this.height,
+  });
+
   final double width;
   final double height;
-  final accountC = Get.put(EditContoller());
+  final accountC = Get.put(AcountController());
   final fromKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    accountC.initial(model);
-
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: kblackcolor,
-          ),
-        ),
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: kblackcolor,
+            )),
+        elevation: 0,
         backgroundColor: kwhitecolor,
         centerTitle: true,
         title: const Text(
-          'Edit Address',
-          style: TextStyle(
-            color: kblackcolor,
-          ),
+          'Add address',
+          style: TextStyle(color: kblackcolor),
         ),
+        // bottom: PreferredSize(
+        //   preferredSize: Size.fromHeight(height * 0.04),
+        //   child: const SizedBox(),
+        // ),
       ),
       body: SafeArea(
-          child: GetBuilder<EditContoller>(
+          child: GetBuilder<AcountController>(
         builder: (controller) => SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -54,7 +50,7 @@ class EditAccountPage extends StatelessWidget {
               key: fromKey,
               child: Column(
                 children: [
-                  kheight20,
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.tittleC,
                     textInputType: TextInputType.name,
@@ -63,9 +59,7 @@ class EditAccountPage extends StatelessWidget {
                     icon: const Icon(Icons.person),
                     text: 'Title',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.fullNameC,
                     textInputType: TextInputType.name,
@@ -74,9 +68,7 @@ class EditAccountPage extends StatelessWidget {
                     icon: const Icon(Icons.person),
                     text: 'Full Name',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.phoneC,
                     textInputType: TextInputType.number,
@@ -85,20 +77,16 @@ class EditAccountPage extends StatelessWidget {
                     icon: const Icon(Icons.phone),
                     text: 'Phone Number',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.pinC,
                     textInputType: TextInputType.number,
-                    nullText: 'Pincode is Empty',
+                    nullText: 'PinCode is Empty',
                     obscureText: false,
                     icon: const Icon(Icons.pin),
                     text: 'Pincode',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.stateC,
                     textInputType: TextInputType.name,
@@ -107,9 +95,7 @@ class EditAccountPage extends StatelessWidget {
                     icon: const Icon(Icons.public),
                     text: 'State',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.placeC,
                     textInputType: TextInputType.name,
@@ -118,9 +104,7 @@ class EditAccountPage extends StatelessWidget {
                     icon: const Icon(Icons.location_on),
                     text: 'Place',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.addressC,
                     textInputType: TextInputType.streetAddress,
@@ -129,9 +113,7 @@ class EditAccountPage extends StatelessWidget {
                     icon: const Icon(Icons.contact_mail),
                     text: 'Address',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight10,
                   TextFromFieldWidget(
                     textController: accountC.landmarkC,
                     textInputType: TextInputType.name,
@@ -140,9 +122,7 @@ class EditAccountPage extends StatelessWidget {
                     icon: const Icon(Icons.emoji_flags),
                     text: 'Delivery Location',
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  kheight20,
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       fixedSize: Size(width * 0.4, height * 0.05),
@@ -152,14 +132,9 @@ class EditAccountPage extends StatelessWidget {
                     ),
                     onPressed: () {
                       if (fromKey.currentState!.validate()) {
-                        accountC.updateAddress(model.id);
-
-                        Get.off(MyAddress(
-                          width: width,
-                          height: height,
-                        ));
+                        accountC.addAccount();
+                        // Get.back();
                       }
-                      AcountController().getAllAddress();
                     },
                     child: const Text(
                       'S U B M I T',

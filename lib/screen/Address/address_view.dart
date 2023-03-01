@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
-import 'package:pixel_gear/screen/Account/Controller/account_controller.dart';
-import 'package:pixel_gear/screen/Address/widget/add_account.dart';
-
-import '../EditAddress/controller/edit_controller.dart';
-import '../EditAddress/view/edit_account.dart';
+import 'package:pixel_gear/screen/Address/widget/add_address.dart';
+import 'package:pixel_gear/screen/Ordersummary/controller/ordersummaryControll.dart';
+import '../EditAddress/view/edit_address.dart';
 import 'controller/address_controller.dart';
 
 class MyAddress extends StatelessWidget {
@@ -19,7 +17,7 @@ class MyAddress extends StatelessWidget {
   final double height;
 
   final accountC = Get.put(AcountController());
-  // final orderSummerC = Get.put(OrderCOntrollerSummery());
+  final orderSummerC = Get.put(OrderCOntrollerSummery());
   // final accountCg = Get.put(EditContoller());
 
   @override
@@ -47,7 +45,7 @@ class MyAddress extends StatelessWidget {
               : IconButton(
                   onPressed: () {
                     Get.to(
-                      () => AddAccountPage(
+                      () => AddAddressPage(
                         width: width,
                         height: height,
                       ),
@@ -87,10 +85,10 @@ class MyAddress extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.all(12.0),
                               child: Text(
-                                'We apologize, but we were unable to find a valid address. Please add a new address and also ensure that the address you provided is correct and complete, including the street name, number, city, state/province, and postal code. ',
+                                'We were unable to find a valid address. Please add a new address and also ensure that the address you provided is correct and complete, including the street name, number, city, state/province, and postal code. ',
                                 textAlign: TextAlign.justify,
-                                style:
-                                    TextStyle(color: greycolor, fontSize: 15),
+                                style: TextStyle(
+                                    color: Colors.black87, fontSize: 15),
                               ),
                             ),
                             kheight10,
@@ -103,7 +101,7 @@ class MyAddress extends StatelessWidget {
                               ),
                               onPressed: () {
                                 Get.to(
-                                  () => AddAccountPage(
+                                  () => AddAddressPage(
                                     width: width,
                                     height: height,
                                   ),
@@ -125,16 +123,16 @@ class MyAddress extends StatelessWidget {
                             ),
                             child: GestureDetector(
                               onTap: () {
-                                // orderSummerC.indexChange(index);
+                                orderSummerC.indexChange(index);
                                 accountC.changeinde(index);
                               },
                               child: Container(
                                 width: double.infinity,
                                 height: height * 0.258,
                                 decoration: BoxDecoration(
-                                    // color: orderSummerC.index == index
-                                    //     ? Colors.blueGrey[50]
-                                    //     : kwhitecolor,
+                                    color: orderSummerC.index == index
+                                        ? Colors.blueGrey[50]
+                                        : kwhitecolor,
                                     borderRadius: BorderRadius.circular(10),
                                     border: Border.all(
                                       color: Colors.white12,
@@ -155,16 +153,31 @@ class MyAddress extends StatelessWidget {
                                         accountC.addressList[index].fullName,
                                         style: const TextStyle(
                                             color: kblackcolor,
+                                            fontSize: 18,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      Text(accountC.addressList[index].state),
                                       Text(
-                                          '${accountC.addressList[index].place},${accountC.addressList[index].pin}'),
+                                        'Delivery location: ${accountC.addressList[index].landMark}',
+                                        style: const TextStyle(fontSize: 17),
+                                      ),
                                       Text(
-                                          'Phone number: ${accountC.addressList[index].phone}'),
+                                        accountC.addressList[index].address,
+                                        style: const TextStyle(
+                                            color: kblackcolor, fontSize: 17),
+                                      ),
                                       Text(
-                                          'Delivery location: ${accountC.addressList[index].landMark}'),
-                                      kheight10,
+                                        '${accountC.addressList[index].place}, Pincode - ${accountC.addressList[index].pin}',
+                                        style: const TextStyle(fontSize: 17),
+                                      ),
+                                      Text(
+                                        'Phone number: ${accountC.addressList[index].phone}',
+                                        style: const TextStyle(fontSize: 17),
+                                      ),
+                                      Text(
+                                        'State: ${accountC.addressList[index].state}',
+                                        style: const TextStyle(fontSize: 17),
+                                      ),
+                                      kheight05,
                                       Row(
                                         children: [
                                           TextButton(
@@ -185,7 +198,7 @@ class MyAddress extends StatelessWidget {
                                             ),
                                             onPressed: () {
                                               Get.off(
-                                                EditAccountPage(
+                                                EditAddress(
                                                   height: height,
                                                   width: width,
                                                   model: accountC
@@ -217,17 +230,61 @@ class MyAddress extends StatelessWidget {
                                                 height * 0.006,
                                               ),
                                             ),
-                                            onPressed: () {
-                                              accountC.deleteAddress(accountC
-                                                  .addressList[index].id);
-                                            },
-                                            child: const Text(
-                                              'Remove',
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: kblackcolor,
+                                            onPressed: () => showDialog<String>(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  AlertDialog(
+                                                title: const Text(
+                                                    'Are you sure you want to remove your address?'),
+                                                // content: const Text(
+                                                //     'AlertDialog description'),
+                                                actions: <Widget>[
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Get.back();
+                                                    },
+                                                    child: const Text(
+                                                      'Cancel',
+                                                      style: TextStyle(
+                                                          color: kblackcolor),
+                                                    ),
+                                                  ),
+                                                  TextButton(
+                                                    child: const Text(
+                                                      'Ok',
+                                                      style: TextStyle(
+                                                          color: kblackcolor),
+                                                    ),
+                                                    onPressed: () {
+                                                      accountC.deleteAddress(
+                                                          accountC
+                                                              .addressList[
+                                                                  index]
+                                                              .id);
+                                                      Navigator.pop(
+                                                          context, 'OK');
+                                                    },
+                                                  ),
+                                                ],
                                               ),
                                             ),
+                                            child: const Text(
+                                              'Remove',
+                                              style:
+                                                  TextStyle(color: kblackcolor),
+                                            ),
+
+                                            // onPressed: () {
+                                            //   accountC.deleteAddress(accountC
+                                            //       .addressList[index].id);
+                                            // },
+                                            // child: const Text(
+                                            //   'Remove',
+                                            //   style: TextStyle(
+                                            //     fontSize: 15,
+                                            //     color: kblackcolor,
+                                            //   ),
+                                            // ),
                                           ),
                                           kwidth10,
                                         ],

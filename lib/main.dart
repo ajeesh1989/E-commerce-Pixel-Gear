@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/screen/SplashScreen/view/splash.dart';
+import 'package:device_preview/device_preview.dart';
 
-void main(List<String> args) {
-  runApp(const MyApp());
+void main() {
+  runApp(DevicePreview(
+    enabled: false,
+    tools: const [
+      ...DevicePreview.defaultTools,
+    ],
+    builder: (BuildContext context) {
+      return const MyApp();
+    },
+  ));
 }
 
-class MyApp extends GetView {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // goToGetPage();
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      color: Colors.white,
-      home: SplashScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(),
+        home: SplashScreen());
   }
 }
 
