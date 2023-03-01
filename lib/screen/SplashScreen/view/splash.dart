@@ -44,7 +44,7 @@ class SplashScreen extends GetView {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       'With long experience in the camera industry,\n      we create the best quality products.',
-                      style: TextStyle(color: greycolor),
+                      style: TextStyle(color: Colors.black87),
                     ),
                   ),
                   kheight40,

@@ -25,15 +25,6 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeController homeController = Get.put(HomeController());
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: kwhitecolor,
-      //   elevation: 0,
-      //   title: const Text(
-      //     'Search',
-      //     style: TextStyle(color: kblackcolor),
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -75,124 +66,114 @@ class SearchPage extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                      Get.to(() => ProductScreen(
-                                            height: height,
-                                            width: width,
-                                            productid: homeController
-                                                .productList[index].id,
-                                          ));
+                                      Get.to(
+                                        () => ProductScreen(
+                                          height: height,
+                                          width: width,
+                                          productid: homeController
+                                              .productList[index].id,
+                                        ),
+                                      );
                                     },
                                     child: Column(
                                       children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 30),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              kwidth10,
-                                              Container(
-                                                height: 100,
-                                                width: 100,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                  image: NetworkImage(
-                                                    '${ApiBaseUrl().baseUrl}/products/${homeController.searchResult[index].image[0]}',
-                                                  ),
-                                                )),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      homeController
-                                                          .searchResult[index]
-                                                          .name,
-                                                      style: const TextStyle(
-                                                          fontSize: 18,
-                                                          fontFamily: 'Manrope',
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    RatingBar.builder(
-                                                      initialRating:
-                                                          double.parse(
-                                                              homeController
-                                                                  .searchResult[
-                                                                      index]
-                                                                  .rating),
-                                                      itemSize: 15,
-                                                      minRating: 1,
-                                                      direction:
-                                                          Axis.horizontal,
-                                                      allowHalfRating: true,
-                                                      ignoreGestures: true,
-                                                      itemBuilder:
-                                                          (context, _) =>
-                                                              const Icon(
-                                                        Icons.star,
-                                                        color: Colors.amber,
-                                                      ),
-                                                      onRatingUpdate:
-                                                          (startRating) {
-                                                        log(startRating
-                                                            .toString());
-                                                      },
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                          "${homeController.searchResult[index].offer}%Off",
-                                                          style:
-                                                              const TextStyle(
-                                                            color: Colors.green,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            fontFamily:
-                                                                "Manrope",
-                                                          ),
-                                                        ),
-                                                        kwidth10,
-                                                        Text(
-                                                          "₹${homeController.searchResult[index].price}",
-                                                          style:
-                                                              const TextStyle(
-                                                            color: greycolor,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            decoration:
-                                                                TextDecoration
-                                                                    .lineThrough,
-                                                            fontFamily:
-                                                                "Manrope",
-                                                          ),
-                                                        ),
-                                                        kwidth10,
-                                                        Text(
-                                                          "₹${(homeController.searchResult[index].price - homeController.searchResult[index].discountPrice).round()}",
-                                                          style:
-                                                              const TextStyle(
-                                                            color: kblackcolor,
-                                                            fontSize: 20,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontFamily:
-                                                                "Manrope",
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            kwidth10,
+                                            Container(
+                                              height: 100,
+                                              width: 100,
+                                              decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                image: NetworkImage(
+                                                  '${ApiBaseUrl().baseUrl}/products/${homeController.searchResult[index].image[0]}',
                                                 ),
+                                              )),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    homeController
+                                                        .searchResult[index]
+                                                        .name,
+                                                    style: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontFamily: 'Manrope',
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  RatingBar.builder(
+                                                    initialRating: double.parse(
+                                                        homeController
+                                                            .searchResult[index]
+                                                            .rating),
+                                                    itemSize: 15,
+                                                    minRating: 1,
+                                                    direction: Axis.horizontal,
+                                                    allowHalfRating: true,
+                                                    ignoreGestures: true,
+                                                    itemBuilder: (context, _) =>
+                                                        const Icon(
+                                                      Icons.star,
+                                                      color: Colors.amber,
+                                                    ),
+                                                    onRatingUpdate:
+                                                        (startRating) {
+                                                      log(startRating
+                                                          .toString());
+                                                    },
+                                                  ),
+                                                  Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        "${homeController.searchResult[index].offer}%Off",
+                                                        style: const TextStyle(
+                                                          color: Colors.green,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 16,
+                                                          fontFamily: "Manrope",
+                                                        ),
+                                                      ),
+                                                      kwidth10,
+                                                      Text(
+                                                        "₹${homeController.searchResult[index].price}",
+                                                        style: const TextStyle(
+                                                          color: greycolor,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .lineThrough,
+                                                          fontFamily: "Manrope",
+                                                        ),
+                                                      ),
+                                                      kwidth10,
+                                                      Text(
+                                                        "₹${(homeController.searchResult[index].price - homeController.searchResult[index].discountPrice).round()}",
+                                                        style: const TextStyle(
+                                                          color: kblackcolor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily: "Manrope",
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                         kheight10,
                                       ],
@@ -200,7 +181,9 @@ class SearchPage extends StatelessWidget {
                                   );
                                 },
                                 separatorBuilder: (context, index) {
-                                  return const Divider();
+                                  return const Divider(
+                                    thickness: 1,
+                                  );
                                 },
                                 itemCount: homeController.searchResult.length,
                               ),

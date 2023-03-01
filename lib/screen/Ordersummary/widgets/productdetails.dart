@@ -36,65 +36,67 @@ class Body extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 kheight10,
                 const Text(
                   'Price Details',
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.w300),
                 ),
+                const Divider(thickness: 1),
                 kheight10,
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Price',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w500)),
+                              fontSize: 18, fontWeight: FontWeight.w500)),
                       Text(
                         page == 1
                             ? '₹${adrres.model.price}'
-                            : '₹${cartcontrol.cartList!.totalPrice}',
+                            : '₹${cartcontrol.cartList!.totalPrice - cartcontrol.cartList!.totalDiscount}',
                         style: const TextStyle(
                             color: kblackcolor,
                             fontSize: 18,
                             fontWeight: FontWeight.w500),
                       )
                     ]),
-                kheight10,
+                kheight20,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'Delivery Charge',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 18),
                     ),
                     Text(
                       'Free Delivery',
-                      style: TextStyle(color: Colors.green, fontSize: 20),
+                      style:
+                          TextStyle(color: Colors.green.shade800, fontSize: 18),
                     )
                   ],
                 ),
-                kheight10,
+                kheight20,
                 Divider(
                   color: Colors.grey.shade200,
                   height: 1.5,
                   thickness: 1,
                 ),
-                kheight10,
+                kheight30,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
                       'Total Amount',
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     Text(
                         page == 1
                             ? '₹${adrres.model.price}'
-                            : '₹${cartcontrol.cartList!.totalPrice}',
+                            : '₹${cartcontrol.cartList!.totalPrice - cartcontrol.cartList!.totalDiscount}',
                         style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500))
+                            fontSize: 18, fontWeight: FontWeight.w500))
                   ],
                 ),
                 const SizedBox(

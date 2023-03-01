@@ -107,7 +107,10 @@ class DrawerWidget extends GetView {
                         style: TextStyle(color: kblackcolor),
                       ),
                       onTap: () {
-                        Get.to(() => OrderPlace);
+                        Get.to(() => OrderPlace(
+                              height: height,
+                              width: width,
+                            ));
                       },
                     ),
                     ListTile(

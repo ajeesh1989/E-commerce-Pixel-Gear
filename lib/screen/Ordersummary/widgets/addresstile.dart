@@ -45,16 +45,6 @@ class AddressContainer extends StatelessWidget {
                     ),
                   ],
                 ),
-
-                //  Row(children: [
-                //   IconButton(onPressed: () {
-
-                //   }, icon: Icon(Icons.edit)),
-                //   IconButton(onPressed: () {
-
-                //   }, icon: Icon(Icons.delete))
-
-                //  ],)
               ],
             ),
             Text(addresscontrol

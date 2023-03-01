@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Address/widget/add_address.dart';
 import 'package:pixel_gear/screen/Ordersummary/controller/ordersummaryControll.dart';
+import 'package:pixel_gear/screen/Ordersummary/view/oderssummary.dart';
 import '../EditAddress/view/edit_address.dart';
 import 'controller/address_controller.dart';
 
@@ -125,6 +126,7 @@ class MyAddress extends StatelessWidget {
                               onTap: () {
                                 orderSummerC.indexChange(index);
                                 accountC.changeinde(index);
+                                Get.to(() => const OrderSummery(page: 0));
                               },
                               child: Container(
                                 width: double.infinity,

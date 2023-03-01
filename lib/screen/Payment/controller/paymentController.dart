@@ -72,22 +72,34 @@ class PaymentController extends GetxController {
   }
 
   void handlePaymentSuccess(PaymentSuccessResponse response) {
-    Get.snackbar('payment', "SUCCESS:${response.paymentId}",
-        backgroundColor: Colors.green, snackPosition: SnackPosition.BOTTOM);
+    Get.snackbar(
+      'payment',
+      "SUCCESS:${response.paymentId}",
+      colorText: kwhitecolor,
+      backgroundColor: Colors.black54,
+    );
 
     update();
   }
 
   void handlePaymentError(PaymentFailureResponse response) {
-    Get.snackbar('payment', "ERROR:${response.code} - ${response.message}",
-        backgroundColor: redcolor, snackPosition: SnackPosition.BOTTOM);
+    Get.snackbar(
+      'payment',
+      "ERROR:${response.code} - ${response.message}",
+      colorText: kwhitecolor,
+      backgroundColor: Colors.black54,
+    );
 
     update();
   }
 
   void handleExternalWallet(ExternalWalletResponse response) {
-    Get.snackbar('payment', "EXTERNAL_WALLET:${response.walletName}",
-        backgroundColor: redcolor, snackPosition: SnackPosition.BOTTOM);
+    Get.snackbar(
+      'payment',
+      "EXTERNAL_WALLET:${response.walletName}",
+      colorText: kwhitecolor,
+      backgroundColor: Colors.black54,
+    );
 
     update();
   }
@@ -116,10 +128,12 @@ class PaymentController extends GetxController {
           width: Get.width,
         ));
         cartcotro.getCart();
-        Get.snackbar('Order Placed', 'Order placed succefully',
-            backgroundColor: Colors.green,
-            colorText: kblackcolor,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(
+          'Order Placed',
+          'Order placed succefully',
+          backgroundColor: Colors.black87,
+          colorText: kwhitecolor,
+        );
       } else {
         loading = false;
         update();

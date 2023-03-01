@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_custom_cards/flutter_custom_cards.dart';
 import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
@@ -35,6 +34,7 @@ class WishlistPage extends GetView<WishListController> {
   Widget build(BuildContext context) {
     return GetBuilder<WishListController>(
       builder: (controller) => Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           actions: [
             IconButton(
@@ -109,7 +109,7 @@ class WishlistPage extends GetView<WishListController> {
                                 );
                               },
                               child: CustomCard(
-                                elevation: 10,
+                                elevation: 20,
                                 child: SizedBox(
                                   width: width * 0.6,
                                   height: height * 0.5,

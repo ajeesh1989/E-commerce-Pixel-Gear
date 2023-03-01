@@ -17,7 +17,7 @@ class OrderPlace extends StatelessWidget {
   Widget build(BuildContext context) {
     final orderC = Get.put(AllOrderController());
     return GetBuilder<AllOrderController>(builder: (controller) {
-      return orderC.isLoding == true
+      return orderC.isLoding == false
           ? const Center(
               child: CircularProgressIndicator(
                 color: kwhitecolor,
@@ -39,15 +39,17 @@ class OrderPlace extends StatelessWidget {
                   "My Orders",
                   style: TextStyle(
                       color: kblackcolor,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w400),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
                 ),
                 actions: [
                   IconButton(
-                      onPressed: () => Get.to(MyCart(
-                            height: height,
-                            width: width,
-                          )),
+                      onPressed: () => Get.to(
+                            MyCart(
+                              height: height,
+                              width: width,
+                            ),
+                          ),
                       icon: const Icon(
                         Icons.shopping_cart,
                         color: kblackcolor,
@@ -86,10 +88,12 @@ class OrderPlace extends StatelessWidget {
                             userid: orderC.orderList[index].userid,
                             v: orderC.orderList[index].v,
                             cancelDate: orderC.orderList[index].cancelDate);
-                        Get.to(OrderDetails(
-                          model: model,
-                          index: index,
-                        ));
+                        Get.to(
+                          OrderDetails(
+                            model: model,
+                            index: index,
+                          ),
+                        );
                       },
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,

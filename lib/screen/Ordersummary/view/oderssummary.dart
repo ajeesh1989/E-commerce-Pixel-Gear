@@ -79,7 +79,7 @@ class _OrderSummeryState extends State<OrderSummery> {
                                 child: Text(
                                   widget.page == 1
                                       ? '₹${address.model.price}'
-                                      : '₹${cartcontrol.cartList!.totalPrice}',
+                                      : '₹${(cartcontrol.cartList!.totalPrice - cartcontrol.cartList!.totalDiscount).roundToDouble()}',
                                   style: const TextStyle(
                                     fontSize: 19,
                                     fontWeight: FontWeight.w500,
@@ -89,53 +89,51 @@ class _OrderSummeryState extends State<OrderSummery> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 8.0),
                                 child: ElevatedButton(
-                                    style: ButtonStyle(
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15.0),
-                                          // side: BorderSide(color: Colors.red)
-                                        )),
-                                        minimumSize: MaterialStateProperty.all(
-                                            Size(Get.width * 0.4,
-                                                Get.height * 0.05)),
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                Colors.yellow.shade600)),
-                                    onPressed: () {
-                                      ProductElement prodmodel;
-                                      List<ProductElement> model = [
-                                        cartcontrol.reversedProcuct[0]
-                                      ];
-
-                                      widget.page == 1
-                                          ? PaymentController().setTotalAmount(
-                                              int.parse(cartcontrol
-                                                  .reversedProcuct[0].price
-                                                  .toString()),
-                                              model,
-                                              address
-                                                  .addressList[
-                                                      orderCOntrollerSummery
-                                                          .index]
-                                                  .id,
-                                              widget.page)
-                                          : paymentController.setTotalAmount(
-                                              cartcontrol.cartList!.totalPrice,
-                                              cartcontrol.cartList!.products,
-                                              address
-                                                  .addressList[
-                                                      orderCOntrollerSummery
-                                                          .index]
-                                                  .id,
-                                              widget.page);
-                                    },
-                                    child: const Text(
-                                      'Continue',
-                                      style: TextStyle(
-                                          color: kblackcolor, fontSize: 16),
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      // side: BorderSide(color: Colors.red)
                                     )),
+                                    minimumSize: MaterialStateProperty.all(Size(
+                                        Get.width * 0.4, Get.height * 0.05)),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.grey.shade900),
+                                  ),
+                                  onPressed: () {
+                                    List<ProductElement> model = [
+                                      cartcontrol.reversedProcuct[0]
+                                    ];
+
+                                    widget.page == 1
+                                        ? PaymentController().setTotalAmount(
+                                            int.parse(cartcontrol
+                                                .reversedProcuct[0].price
+                                                .toString()),
+                                            model,
+                                            address
+                                                .addressList[
+                                                    orderCOntrollerSummery
+                                                        .index]
+                                                .id,
+                                            widget.page)
+                                        : paymentController.setTotalAmount(
+                                            cartcontrol.cartList!.totalPrice,
+                                            cartcontrol.cartList!.products,
+                                            address
+                                                .addressList[
+                                                    orderCOntrollerSummery
+                                                        .index]
+                                                .id,
+                                            widget.page);
+                                  },
+                                  child: const Text(
+                                    'Continue',
+                                    style: TextStyle(
+                                        color: kwhitecolor, fontSize: 18),
+                                  ),
+                                ),
                               )
                             ],
                           ),

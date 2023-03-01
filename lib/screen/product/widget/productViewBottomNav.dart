@@ -5,6 +5,7 @@ import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/Cart/controller/cart_controller.dart';
 import 'package:pixel_gear/screen/Cart/view/cart.dart';
 import 'package:pixel_gear/screen/Home/model/productmodel.dart';
+import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
 
 class ProductviewBottomNavwidget extends StatelessWidget {
   ProductviewBottomNavwidget(
@@ -144,18 +145,19 @@ class ProductviewBottomNavwidget extends StatelessWidget {
                               width: Get.width,
                               height: Get.height * 0.05,
                               child: TextButton(
-                                  onPressed: () {
-                                    Get.off(
-                                      () => MyCart(
-                                        height: height,
-                                        width: width,
-                                      ),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Go to Cart',
-                                    style: TextStyle(color: kblackcolor),
-                                  )),
+                                onPressed: () {
+                                  Get.off(
+                                    () => MyCart(
+                                      height: height,
+                                      width: width,
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  'Go to Cart',
+                                  style: TextStyle(color: kblackcolor),
+                                ),
+                              ),
                             )
                           ],
                         ),
@@ -165,9 +167,6 @@ class ProductviewBottomNavwidget extends StatelessWidget {
                 ),
                 barrierColor: Colors.grey.shade100,
                 isDismissible: true,
-                // shape: RoundedRectangleBorder(
-                //     borderRadius: BorderRadius.circular(35),
-                //     side: BorderSide(width: 5, color: Colors.black)),
                 enableDrag: false,
               );
             },
@@ -196,14 +195,22 @@ class ProductviewBottomNavwidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            onPressed: () {},
-            child: const Text(
-              'Buy Now',
-              style: TextStyle(
-                fontSize: 17,
-                color: kwhitecolor,
-                fontWeight: FontWeight.bold,
-              ),
+            onPressed: () {
+              Get.to(() => WishlistPage(height: height, width: width));
+            },
+            child: Row(
+              children: const [
+                Icon(Icons.favorite),
+                kwidth10,
+                Text(
+                  'Wish list',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: kwhitecolor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

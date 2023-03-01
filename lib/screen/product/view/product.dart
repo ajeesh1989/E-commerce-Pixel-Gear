@@ -49,15 +49,15 @@ class ProductScreen extends GetView {
               color: kblackcolor,
             ),
           ),
-          TextButton(
-            onPressed: () {
-              Get.to(() => WishlistPage(height: height, width: width));
-            },
-            child: const Text(
-              'Wishlist',
-              style: TextStyle(color: kblackcolor),
-            ),
-          )
+          // TextButton(
+          //   onPressed: () {
+          //     Get.to(() => WishlistPage(height: height, width: width));
+          //   },
+          //   child: const Text(
+          //     'Wishlist',
+          //     style: TextStyle(color: kblackcolor),
+          //   ),
+          // )
         ],
         leading: IconButton(
           onPressed: () => Get.back(),
