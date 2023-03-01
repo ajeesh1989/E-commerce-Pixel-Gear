@@ -60,7 +60,7 @@ class AllOrder {
         deliveryDate: DateTime.parse(json["deliveryDate"]),
         cancelDate: json["cancelDate"],
         totalPrice: json["totalPrice"],
-        totalDiscount: json["totalDiscount"],
+        totalDiscount: json["totalDiscount"].toInt(),
         v: json["__v"],
       );
 
@@ -108,7 +108,7 @@ class ProductElement {
         product: ProductProduct.fromJson(json["product"]),
         qty: json["qty"],
         price: json["price"],
-        discountPrice: json["discountPrice"],
+        discountPrice: json["discountPrice"].toInt(),
         size: json["size"],
         id: json["_id"],
       );
@@ -154,7 +154,7 @@ class ProductProduct {
         id: json["_id"],
         name: json["name"],
         price: json["price"],
-        discountPrice: json["discountPrice"],
+        discountPrice: json["discountPrice"].toInt(),
         offer: json["offer"],
         size: List<String>.from(json["size"].map((x) => x)),
         image: List<String>.from(json["image"].map((x) => x)),
