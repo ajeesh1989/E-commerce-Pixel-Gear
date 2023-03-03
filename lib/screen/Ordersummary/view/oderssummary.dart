@@ -10,22 +10,14 @@ import '../../Cart/controller/cart_controller.dart';
 import '../../Cart/model/getcartmodel.dart';
 import '../controller/ordersummaryControll.dart';
 
-class OrderSummery extends StatefulWidget {
-  const OrderSummery({super.key, required this.page});
+class OrderSummery extends StatelessWidget {
+  OrderSummery({super.key, required this.page});
   final int page;
 
-  @override
-  State<OrderSummery> createState() => _OrderSummeryState();
-}
-
-class _OrderSummeryState extends State<OrderSummery> {
   PaymentController paymentController = PaymentController();
 
-  @override
-  @override
   void dispose() {
     paymentController.razorpay.clear();
-    super.dispose();
   }
 
   @override
@@ -63,7 +55,7 @@ class _OrderSummeryState extends State<OrderSummery> {
                 ),
                 body: Stack(
                   children: [
-                    Body(cartcontrol: cartcontrol, page: widget.page),
+                    Body(cartcontrol: cartcontrol, page: page),
                     Positioned(
                       bottom: Get.height * 0,
                       child: Container(
@@ -77,7 +69,7 @@ class _OrderSummeryState extends State<OrderSummery> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 30.0),
                                 child: Text(
-                                  widget.page == 1
+                                  page == 1
                                       ? '₹${address.model.price}'
                                       : '₹${(cartcontrol.cartList!.totalPrice - cartcontrol.cartList!.totalDiscount).roundToDouble()}',
                                   style: const TextStyle(
@@ -106,7 +98,7 @@ class _OrderSummeryState extends State<OrderSummery> {
                                       cartcontrol.reversedProcuct[0]
                                     ];
 
-                                    widget.page == 1
+                                    page == 1
                                         ? PaymentController().setTotalAmount(
                                             int.parse(cartcontrol
                                                 .reversedProcuct[0].price
@@ -117,7 +109,7 @@ class _OrderSummeryState extends State<OrderSummery> {
                                                     orderCOntrollerSummery
                                                         .index]
                                                 .id,
-                                            widget.page)
+                                            page)
                                         : paymentController.setTotalAmount(
                                             cartcontrol.cartList!.totalPrice,
                                             cartcontrol.cartList!.products,
@@ -126,7 +118,7 @@ class _OrderSummeryState extends State<OrderSummery> {
                                                     orderCOntrollerSummery
                                                         .index]
                                                 .id,
-                                            widget.page);
+                                            page);
                                   },
                                   child: const Text(
                                     'Continue',

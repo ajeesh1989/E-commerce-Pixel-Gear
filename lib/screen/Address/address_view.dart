@@ -19,7 +19,6 @@ class MyAddress extends StatelessWidget {
 
   final accountC = Get.put(AcountController());
   final orderSummerC = Get.put(OrderCOntrollerSummery());
-  // final accountCg = Get.put(EditContoller());
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +125,7 @@ class MyAddress extends StatelessWidget {
                               onTap: () {
                                 orderSummerC.indexChange(index);
                                 accountC.changeinde(index);
-                                Get.to(() => const OrderSummery(page: 0));
+                                Get.to(() => OrderSummery(page: 0));
                               },
                               child: Container(
                                 width: double.infinity,

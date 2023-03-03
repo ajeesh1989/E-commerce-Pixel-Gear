@@ -118,26 +118,28 @@ class PaymentController extends GetxController {
     log(paymentType);
     log(products[0].id);
 
-    await OrderService().placeOrder(model).then((value) {
-      if (value != null) {
-        loading = false;
-        update();
+    await OrderService().placeOrder(model).then(
+      (value) {
+        if (value != null) {
+          loading = false;
+          update();
 
-        Get.off(OrderPlace(
-          height: Get.height,
-          width: Get.width,
-        ));
-        cartcotro.getCart();
-        Get.snackbar(
-          'Order Placed',
-          'Order placed succefully',
-          backgroundColor: Colors.black87,
-          colorText: kwhitecolor,
-        );
-      } else {
-        loading = false;
-        update();
-      }
-    });
+          Get.off(OrderPlace(
+            height: Get.height,
+            width: Get.width,
+          ));
+          cartcotro.getCart();
+          Get.snackbar(
+            'Order Placed',
+            'Order placed succefully',
+            backgroundColor: Colors.black87,
+            colorText: kwhitecolor,
+          );
+        } else {
+          loading = false;
+          update();
+        }
+      },
+    );
   }
 }

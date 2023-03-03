@@ -36,10 +36,6 @@ class AddAddressPage extends StatelessWidget {
           'Add address',
           style: TextStyle(color: kblackcolor),
         ),
-        // bottom: PreferredSize(
-        //   preferredSize: Size.fromHeight(height * 0.04),
-        //   child: const SizedBox(),
-        // ),
       ),
       body: SafeArea(
           child: GetBuilder<AcountController>(

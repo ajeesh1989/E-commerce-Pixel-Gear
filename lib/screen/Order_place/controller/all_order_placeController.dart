@@ -10,9 +10,7 @@ class AllOrderController extends GetxController {
 
   @override
   void onInit() {
-    log('contsrtuct');
     getorder();
-
     super.onInit();
   }
 

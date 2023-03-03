@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:pixel_gear/core/colors.dart';
@@ -18,7 +19,7 @@ class OrderDetailsController extends GetxController {
         update();
         allorderController.getorder();
         Get.snackbar('order Cancel', 'order Canceld Successfuly',
-            snackPosition: SnackPosition.BOTTOM, backgroundColor: redcolor);
+            colorText: kwhitecolor, backgroundColor: Colors.black87);
       } else {
         isLoading = false;
         update();

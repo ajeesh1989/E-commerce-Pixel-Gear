@@ -139,12 +139,14 @@ class OrderPlace extends StatelessWidget {
                                       ? Text(
                                           'Cancel date ${orderC.orderList[index].cancelDate.toString().substring(8, 10)}/${orderC.orderList[index].cancelDate.toString().substring(6, 7)}/${orderC.orderList[index].cancelDate.toString().substring(0, 4)}',
                                           style: const TextStyle(
-                                              color: Colors.grey, fontSize: 15),
+                                              color: Colors.black54,
+                                              fontSize: 15),
                                         )
                                       : Text(
                                           'Delivery date ${orderC.orderList[index].deliveryDate.day}/${orderC.orderList[index].deliveryDate.month}/${orderC.orderList[index].deliveryDate.year}',
                                           style: const TextStyle(
-                                              color: Colors.grey, fontSize: 15),
+                                              color: Colors.black54,
+                                              fontSize: 15),
                                         ),
                                 ],
                               ),

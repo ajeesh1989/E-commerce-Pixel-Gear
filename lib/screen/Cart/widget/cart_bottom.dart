@@ -55,7 +55,7 @@ class CartBottom extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Get.to(() => const OrderSummery(
+              Get.to(() => OrderSummery(
                     page: 0,
                   ));
             },

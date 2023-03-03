@@ -2,12 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
+import 'package:pixel_gear/screen/BottomNavBar/View/bottomnav.dart';
 import 'package:pixel_gear/screen/Order_place/model/all_order_model.dart';
 
 import 'package:pixel_gear/screen/orderDetails/controller/orderDetailsController.dart';
+import 'package:pixel_gear/util/Box/box.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -30,92 +31,107 @@ class OrderDetails extends StatelessWidget {
         leading: GestureDetector(
           onTap: () => Get.back(),
           child: const Icon(
-            Icons.arrow_back_ios,
+            Icons.arrow_back,
             color: kblackcolor,
           ),
         ),
         title: const Text(
           "Order Details",
           style: TextStyle(
-              color: kblackcolor, fontSize: 25, fontWeight: FontWeight.w400),
+              color: kblackcolor, fontSize: 18, fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.to(BottomNavPage());
+            },
+            icon: const Icon(
+              Icons.home,
+              color: kblackcolor,
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 50,
-              width: Get.width,
-              color: Colors.grey.shade200,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    Text(
-                      'Order ID - ${model.id}',
-                      style: const TextStyle(color: Colors.grey, fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const Divider(thickness: 2, height: 0),
-            Container(
-              color: kwhitecolor,
-              height: 150,
-              width: Get.width,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10, left: 10),
+            Card(
+              child: SizedBox(
+                height: 50,
+                width: Get.width,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            model.products[0].product.name,
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w500),
-                          ),
-                          kheight10,
-                          Text(
-                            'quantity ${model.products[0].qty}',
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          kheight10,
-                          Text(
-                            '₹ ${model.products[0].product.price}',
-                            style: const TextStyle(
-                                fontSize: 22,
-                                color: kblackcolor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 120,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                '${ApiBaseUrl().baseUrl}/products/${model.products[0].product.image[0]}'),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
+                      Text(
+                        'Order ID - ${model.id}',
+                        style: const TextStyle(
+                            color: Colors.black87, fontSize: 16),
                       ),
                     ],
                   ),
                 ),
               ),
             ),
-            const Divider(thickness: 2, height: 0),
+            Card(
+              child: SizedBox(
+                height: 150,
+                width: Get.width,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 10,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          height: 120,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  '${ApiBaseUrl().baseUrl}/products/${model.products[0].product.image[0]}'),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            kheight10,
+                            Text(
+                              model.products[0].product.name,
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w500),
+                            ),
+                            kheight10,
+                            Text(
+                              'Quantity - ${model.products[0].qty}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.black54,
+                              ),
+                            ),
+                            kheight10,
+                            Text(
+                              '₹${model.products[0].product.price - model.products[0].product.discountPrice}',
+                              style: const TextStyle(
+                                  fontSize: 22,
+                                  color: kblackcolor,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
             GetBuilder<AllOrderController>(
               builder: (controller) {
                 log(orderC.orderList[index].cancelDate.toString());
@@ -137,25 +153,24 @@ class OrderDetails extends StatelessWidget {
                             text: TextSpan(
                               text: "Order confirmed\n",
                               style: const TextStyle(
-                                  fontSize: 18, color: kblackcolor),
+                                  fontSize: 17, color: kblackcolor),
                               children: [
                                 TextSpan(
-                                    text:
-                                        '${model.orderDate.day}/${model.orderDate.month}/${model.orderDate.year}',
-                                    style: const TextStyle(fontSize: 17))
+                                  text:
+                                      '${model.orderDate.day}/${model.orderDate.month}/${model.orderDate.year}',
+                                  style: const TextStyle(fontSize: 16),
+                                )
                               ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    kheight20,
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 15, left: 20),
+                          padding: const EdgeInsets.only(top: 15, left: 18),
                           child: orderC.orderList[index].orderStatus ==
                                   'CANCELED'
                               ? Row(
@@ -174,13 +189,14 @@ class OrderDetails extends StatelessWidget {
                                       text: TextSpan(
                                         text: "Order Cancelled\n",
                                         style: const TextStyle(
-                                            fontSize: 18, color: kblackcolor),
+                                            fontSize: 17, color: kblackcolor),
                                         children: [
                                           TextSpan(
-                                              text:
-                                                  '${orderC.orderList[index].cancelDate.toString().substring(8, 10)}/${orderC.orderList[index].cancelDate.toString().substring(6, 7)}/${orderC.orderList[index].cancelDate.toString().substring(0, 4)}',
-                                              style:
-                                                  const TextStyle(fontSize: 17))
+                                            text:
+                                                '${orderC.orderList[index].cancelDate.toString().substring(8, 10)}/${orderC.orderList[index].cancelDate.toString().substring(6, 7)}/${orderC.orderList[index].cancelDate.toString().substring(0, 4)}',
+                                            style:
+                                                const TextStyle(fontSize: 16),
+                                          )
                                         ],
                                       ),
                                     ),
@@ -191,7 +207,7 @@ class OrderDetails extends StatelessWidget {
                                     Icon(
                                       Icons.radio_button_off,
                                       color: Colors.grey,
-                                      size: 28,
+                                      size: 25,
                                     ),
                                     SizedBox(
                                       width: 15,
@@ -199,7 +215,7 @@ class OrderDetails extends StatelessWidget {
                                     Text(
                                       'Order Shipped',
                                       style: TextStyle(
-                                          color: Colors.grey, fontSize: 18),
+                                          color: Colors.white70, fontSize: 17),
                                     ),
                                   ],
                                 ),
@@ -213,13 +229,13 @@ class OrderDetails extends StatelessWidget {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 15, left: 20),
+                                        top: 15, left: 17),
                                     child: Row(
                                       children: const [
                                         Icon(
                                           Icons.radio_button_off,
                                           color: Colors.grey,
-                                          size: 28,
+                                          size: 25,
                                         ),
                                         SizedBox(
                                           width: 15,
@@ -232,90 +248,105 @@ class OrderDetails extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  kheight40,
+                                  kheight20
                                 ],
                               ),
                       ],
                     ),
-                    Container(
-                      width: Get.width,
-                      height: 70,
-                      color: Colors.grey.shade300,
-                      child: orderC.orderList[index].orderStatus == 'CANCELED'
-                          ? Center(
-                              child: GestureDetector(
-                                onTap: () => launchUr(Uri.parse(
-                                    'mailto:akhilb4001@gmail.com?subject=Help me&body=need help')),
-                                child: const Text(
-                                  'Need help?',
-                                  style: TextStyle(fontSize: 20),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    Card(
+                      elevation: 1,
+                      child: SizedBox(
+                        width: Get.width,
+                        height: 40,
+                        child: orderC.orderList[index].orderStatus == 'CANCELED'
+                            ? Center(
+                                child: GestureDetector(
+                                  onTap: () => launchUr(
+                                    Uri.parse(
+                                        'mailto:ajeeshrko@gmail.com?subject=Help me&body=need help'),
+                                  ),
+                                  child: const Text(
+                                    'Need help?',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
                                 ),
+                              )
+                            : Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Get.defaultDialog(
+                                          onConfirm: () {
+                                            ordeCanceController
+                                                .cancelOrder(model.id);
+                                            Get.back();
+                                          },
+                                          textConfirm: 'Yes',
+                                          title: 'Cancel',
+                                          textCancel: 'No',
+                                          cancelTextColor: kblackcolor,
+                                          confirmTextColor: kwhitecolor,
+                                          middleText: 'Do you want to cancel?',
+                                          buttonColor: Colors.grey.shade900);
+                                    },
+                                    child: const Text(
+                                      'Cancel',
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.black87),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Share.share(
+                                        'https://play.google.com/store/apps/details?id=com.',
+                                      );
+                                    },
+                                    child: Row(
+                                      children: const [
+                                        Icon(Icons.share),
+                                        SizedBox(
+                                          width: 9,
+                                        ),
+                                        Text('Share Order Details',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.black87))
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                            )
-                          : Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.defaultDialog(
-                                        onConfirm: () {
-                                          ordeCanceController
-                                              .cancelOrder(model.id);
-                                          Get.back();
-                                        },
-                                        textConfirm: 'Yes',
-                                        title: 'Cancel',
-                                        textCancel: 'No',
-                                        middleText: 'Do you want to cancel');
-                                  },
-                                  child: Text(
-                                    'Cancel',
-                                    style: TextStyle(
-                                        fontSize: 19,
-                                        color: Colors.grey.shade700),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Share.share(
-                                      'https://play.google.com/store/apps/details?id=com.',
-                                    );
-                                  },
-                                  child: Row(
-                                    children: [
-                                      const Icon(Icons.share),
-                                      const SizedBox(
-                                        width: 9,
-                                      ),
-                                      Text('Share Order Details',
-                                          style: TextStyle(
-                                              fontSize: 19,
-                                              color: Colors.grey.shade700))
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                    )
+                      ),
+                    ),
                   ],
                 );
               },
             ),
-            Container(
-              width: Get.width,
-              height: 45,
-              color: Colors.grey.shade200,
-              child: const Padding(
-                padding: EdgeInsets.only(left: 14.0, top: 13),
-                child: Text('Shopping Details'),
+            Card(
+              elevation: 1,
+              child: SizedBox(
+                width: Get.width,
+                height: 45,
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 14.0, top: 13),
+                  child: Text(
+                    'Shopping Details',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0, left: 15),
+              padding: const EdgeInsets.only(top: 8.0, left: 15),
               child: RichText(
                 text: TextSpan(
                   text: "${model.fullName}\n",
-                  style: const TextStyle(fontSize: 18, color: kblackcolor),
+                  style: const TextStyle(fontSize: 17, color: kblackcolor),
                   children: [
                     TextSpan(
                         text: '${model.place}\n',

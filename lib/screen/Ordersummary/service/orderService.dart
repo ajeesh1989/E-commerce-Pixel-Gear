@@ -2,12 +2,12 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../../../api/api_baseurl.dart';
-import '../../../api/api_endurl.dart';
-import '../../../util/api_intercepter/api_intercepter.dart';
-import '../../../util/dio_exception/exceptions.dart';
-import '../model/get_order.dart';
-import '../model/order_model.dart';
+import 'package:pixel_gear/api/api_baseurl.dart';
+import 'package:pixel_gear/api/api_endurl.dart';
+import 'package:pixel_gear/util/api_intercepter/api_intercepter.dart';
+import 'package:pixel_gear/util/dio_exception/exceptions.dart';
+import 'package:pixel_gear/screen/Ordersummary/model/get_order.dart';
+import 'package:pixel_gear/screen/Ordersummary/model/order_model.dart';
 
 class OrderService {
   Future<String?> placeOrder(OrdersModel model) async {
@@ -21,7 +21,6 @@ class OrderService {
         ApiBaseUrl().baseUrl + ApiEndsUrl().order,
         data: model.toJson(),
       );
-      log('message3', name: 'cart');
       log(response.toString());
 
       if (response.statusCode == 200 || response.statusCode == 201) {
