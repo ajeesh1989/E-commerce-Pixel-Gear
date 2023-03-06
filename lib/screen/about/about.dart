@@ -42,7 +42,7 @@ class About extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,13 +124,36 @@ class About extends StatelessWidget {
                               icon: const Icon(FontAwesomeIcons.github)),
                         ],
                       ),
-                      const Padding(
-                        padding: EdgeInsets.all(30.0),
-                        child: Center(child: Text('version:1.0')),
-                      ),
                     ],
                   ),
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Center(
+                  child: RichText(
+                    text: const TextSpan(
+                      text: 'Developed by: Ajeesh Das.H ',
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w300),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: '    copyright © 2023',
+                            style: TextStyle(fontWeight: FontWeight.w500)),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Center(
+                    child: Text(
+                  'version:1.0',
+                  style: TextStyle(fontSize: 11),
+                )),
               ),
             ],
           ),
