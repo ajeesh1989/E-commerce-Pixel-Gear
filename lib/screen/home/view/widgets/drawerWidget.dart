@@ -7,6 +7,7 @@ import 'package:pixel_gear/screen/Cart/view/cart.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Order_place/view/order_place.dart';
 import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
+import 'package:pixel_gear/screen/about/about.dart';
 import 'package:pixel_gear/screen/privacypolicy/privacy_policy.dart';
 import 'package:pixel_gear/screen/termsAndconditions/terms.dart';
 
@@ -187,7 +188,7 @@ class DrawerWidget extends GetView {
                 style: TextStyle(fontSize: 16, color: kblackcolor),
               ),
               onTap: () {
-                Get.back();
+                Get.to(() => About());
               },
             ),
             ListTile(
