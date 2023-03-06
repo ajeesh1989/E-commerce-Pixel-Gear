@@ -27,11 +27,11 @@ class ProductDeatails extends StatelessWidget {
               page == 1
                   ? '${ApiBaseUrl().baseUrl}/products/${adrres.model.image[0]}'
                   : '${ApiBaseUrl().baseUrl}/products/${cartcontrol.cartList!.products[index].product.image[0]}',
-              height: 150,
-              width: 150,
+              height: 120,
+              width: 120,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 13.0),
+              padding: const EdgeInsets.only(top: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

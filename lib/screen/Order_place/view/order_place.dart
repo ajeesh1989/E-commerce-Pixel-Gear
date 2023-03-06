@@ -35,7 +35,7 @@ class OrderPlace extends StatelessWidget {
                 leading: IconButton(
                   onPressed: () => Get.back(),
                   icon: const Icon(
-                    Icons.arrow_back_ios,
+                    Icons.arrow_back,
                     color: kblackcolor,
                   ),
                 ),
@@ -99,6 +99,8 @@ class OrderPlace extends StatelessWidget {
                             OrderDetails(
                               model: model,
                               index: index,
+                              height: height,
+                              width: width,
                             ),
                           );
                         },

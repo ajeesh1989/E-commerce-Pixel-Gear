@@ -79,15 +79,7 @@ class ProductScreen extends GetView {
                   productc: productC,
                 ),
               ),
-              kheight10,
-              // Text(
-              //   findproduct.name,
-              //   style: const TextStyle(
-              //       fontWeight: FontWeight.w500,
-              //       fontSize: 20,
-              //       color: greycolor),
-              // ),
-              kheight10,
+              kheight20,
               ReadMoreText(
                 findproduct.description,
                 style: const TextStyle(fontSize: 16),

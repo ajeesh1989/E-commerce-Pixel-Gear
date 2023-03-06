@@ -5,19 +5,28 @@ import 'package:get/get.dart';
 import 'package:pixel_gear/api/api_baseurl.dart';
 import 'package:pixel_gear/core/colors.dart';
 import 'package:pixel_gear/screen/BottomNavBar/View/bottomnav.dart';
+import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Order_place/model/all_order_model.dart';
-
 import 'package:pixel_gear/screen/orderDetails/controller/orderDetailsController.dart';
-import 'package:pixel_gear/util/Box/box.dart';
+import 'package:pixel_gear/screen/product/view/product.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../Order_place/controller/all_order_placeController.dart';
 
 class OrderDetails extends StatelessWidget {
-  const OrderDetails({super.key, required this.model, required this.index});
+  OrderDetails(
+      {super.key,
+      required this.model,
+      required this.index,
+      required this.height,
+      required this.width});
   final AllOrder model;
   final int index;
+  final productC = Get.put(
+    HomeController(),
+  );
+  final double height;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +53,9 @@ class OrderDetails extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(BottomNavPage());
+              Get.to(
+                BottomNavPage(),
+              );
             },
             icon: const Icon(
               Icons.home,
@@ -59,7 +70,7 @@ class OrderDetails extends StatelessWidget {
           children: [
             Card(
               child: SizedBox(
-                height: 50,
+                height: 30,
                 width: Get.width,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0),
@@ -129,6 +140,38 @@ class OrderDetails extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+              ),
+            ),
+            Card(
+              elevation: 1,
+              child: SizedBox(
+                width: Get.width,
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          ProductScreen(
+                            height: height,
+                            width: width,
+                            productid: productC.productList[index].id,
+                          ),
+                        );
+                      },
+                      child: Row(
+                        children: const [
+                          Text(
+                            'Buy Again',
+                            style:
+                                TextStyle(fontSize: 18, color: Colors.black87),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -291,7 +334,7 @@ class OrderDetails extends StatelessWidget {
                                           textCancel: 'No',
                                           cancelTextColor: kblackcolor,
                                           confirmTextColor: kwhitecolor,
-                                          middleText: 'Do you want to cancel?',
+                                          middleText: 'want to cancel?',
                                           buttonColor: Colors.grey.shade900);
                                     },
                                     child: const Text(

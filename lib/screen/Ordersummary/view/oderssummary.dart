@@ -48,6 +48,7 @@ class OrderSummery extends StatelessWidget {
                       color: kblackcolor,
                     ),
                   ),
+                  centerTitle: true,
                   title: const Text(
                     'Order Summary',
                     style: TextStyle(color: kblackcolor, fontSize: 20),
@@ -126,12 +127,12 @@ class OrderSummery extends StatelessWidget {
                                         color: kwhitecolor, fontSize: 18),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               );

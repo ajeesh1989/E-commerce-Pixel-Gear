@@ -1,3 +1,3 @@
 class ApiBaseUrl {
-  String baseUrl = 'http://10.4.4.132:5000';
+  String baseUrl = 'http://10.4.2.163:5000';
 }

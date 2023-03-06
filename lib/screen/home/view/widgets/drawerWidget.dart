@@ -7,6 +7,8 @@ import 'package:pixel_gear/screen/Cart/view/cart.dart';
 import 'package:pixel_gear/screen/Home/controller/home_controller.dart';
 import 'package:pixel_gear/screen/Order_place/view/order_place.dart';
 import 'package:pixel_gear/screen/Wishlist/view/wishlist.dart';
+import 'package:pixel_gear/screen/privacypolicy/privacy_policy.dart';
+import 'package:pixel_gear/screen/termsAndconditions/terms.dart';
 
 class DrawerWidget extends GetView {
   DrawerWidget({
@@ -23,7 +25,7 @@ class DrawerWidget extends GetView {
         child: ListView(
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blueGrey.shade900),
+              decoration: BoxDecoration(color: Colors.blueGrey.shade200),
               // margin: const EdgeInsets.only(bottom: 0, top: 0),
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0),
@@ -34,35 +36,25 @@ class DrawerWidget extends GetView {
                       children: [
                         const Icon(
                           Icons.linked_camera_outlined,
-                          size: 50,
-                          color: kwhitecolor,
+                          size: 60,
+                          color: Colors.black54,
                         ),
                         kwidth10,
                         RichText(
                           text: const TextSpan(
                             text: 'P i x e l  ',
                             style: TextStyle(
-                                color: kwhitecolor,
-                                fontSize: 21,
+                                color: Colors.black87,
+                                fontSize: 28,
                                 fontWeight: FontWeight.w300),
                             children: <TextSpan>[
                               TextSpan(
                                   text: 'G e a r',
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold)),
-                              TextSpan(text: ''),
                             ],
                           ),
                         ),
-                        // Text(
-                        //   'P i x e l  G e a r',
-                        //   textAlign: TextAlign.center,
-                        //   style: (TextStyle(
-                        //     fontSize: 20,
-                        //     color: kwhitecolor,
-                        //     fontWeight: FontWeight.w400,
-                        //   )),
-                        // ),
                       ],
                     ),
                   ],
@@ -107,10 +99,12 @@ class DrawerWidget extends GetView {
                         style: TextStyle(color: kblackcolor),
                       ),
                       onTap: () {
-                        Get.to(() => OrderPlace(
-                              height: height,
-                              width: width,
-                            ));
+                        Get.to(
+                          () => OrderPlace(
+                            height: height,
+                            width: width,
+                          ),
+                        );
                       },
                     ),
                     ListTile(
@@ -119,13 +113,11 @@ class DrawerWidget extends GetView {
                         color: Colors.black54,
                       ),
                       title: GestureDetector(
-                          onTap: () {
-                            Get.to(WishlistPage(height: height, width: width));
-                          },
-                          child: const Text("My wishlist")),
-                      onTap: () {
-                        //action on press
-                      },
+                        onTap: () {
+                          Get.to(WishlistPage(height: height, width: width));
+                        },
+                        child: const Text("My wishlist"),
+                      ),
                     ),
                     ListTile(
                       leading: const Icon(
@@ -133,13 +125,11 @@ class DrawerWidget extends GetView {
                         color: Colors.black54,
                       ),
                       title: GestureDetector(
-                          onTap: () {
-                            Get.to(MyCart(height: height, width: width));
-                          },
-                          child: const Text("My cart")),
-                      onTap: () {
-                        //action on press
-                      },
+                        onTap: () {
+                          Get.to(MyCart(height: height, width: width));
+                        },
+                        child: const Text("My cart"),
+                      ),
                     ),
                     ListTile(
                       leading: const Icon(
@@ -148,13 +138,14 @@ class DrawerWidget extends GetView {
                       ),
                       title: GestureDetector(
                           onTap: () {
-                            Get.to(MyAddress(
-                              height: height,
-                              width: width,
-                            ));
+                            Get.to(
+                              MyAddress(
+                                height: height,
+                                width: width,
+                              ),
+                            );
                           },
                           child: const Text("My Address")),
-                      onTap: () {},
                     ),
                   ],
                 ),
@@ -170,7 +161,7 @@ class DrawerWidget extends GetView {
                 style: TextStyle(fontSize: 16, color: kblackcolor),
               ),
               onTap: () {
-                Get.back();
+                Get.to(() => const TermsAndConditions());
               },
             ),
             ListTile(
@@ -183,7 +174,7 @@ class DrawerWidget extends GetView {
                 style: TextStyle(fontSize: 16, color: kblackcolor),
               ),
               onTap: () {
-                Get.back();
+                Get.to(() => const PrivacyPolicy());
               },
             ),
             ListTile(

@@ -45,11 +45,13 @@ class HomeGrid extends GetView {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      Get.to(ProductScreen(
-                        height: height,
-                        width: width,
-                        productid: productC.productList[index].id,
-                      ));
+                      Get.to(
+                        ProductScreen(
+                          height: height,
+                          width: width,
+                          productid: productC.productList[index].id,
+                        ),
+                      );
                       // productC.toProdutScreen(index);
                     },
                     child: CustomCard(
