@@ -118,6 +118,36 @@ class PrivacyPolicy extends StatelessWidget {
                     textAlign: TextAlign.justify,
                     '\n7.Comply with legal and regulatory requirements.'),
               ),
+              Text(
+                '\n\nSecurity',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 3.0),
+                child: Text(
+                    textAlign: TextAlign.justify,
+                    '\nWe take reasonable measures to protect your information from unauthorized access and disclosure. However, no security measures are perfect, and we cannot guarantee the security of your information.'),
+              ),
+              Text(
+                '\n\nChanges to this Privacy Policy',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 3.0),
+                child: Text(
+                    textAlign: TextAlign.justify,
+                    '\nWe may update this Privacy Policy from time to time. If we make material changes, we will notify you by email or by posting a notice on the App. Your continued use of the App after the effective date of the revised Privacy Policy constitutes your acceptance of the revised Privacy Policy.'),
+              ),
+              Text(
+                '\n\nContact Us',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 3.0),
+                child: Text(
+                    textAlign: TextAlign.justify,
+                    '\nIf you have any questions about this Privacy Policy or our practices,\n\n\nplease contact us at support@pixelgear.com.\n\n\n'),
+              ),
             ],
           ),
         ),
