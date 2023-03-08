@@ -67,7 +67,17 @@ class OrderPlace extends StatelessWidget {
               body: ListView.builder(
                 itemCount: orderC.orderList.length,
                 itemBuilder: (context, index) {
-                  log('order');
+                  log(orderC.orderList[index].cancelDate.toString(),
+                      name: 'order');
+                  orderC.orderList[index].cancelDate.toString().isEmpty
+                      ? null
+                      : orderC.monthDelivery(
+                          orderC.orderList[index].deliveryDate.month);
+                  // orderC.monthCancel(int.parse(orderC
+                  //     .orderList[index].cancelDate
+                  //     .toString()
+                  //     .substring(5, 7)));
+
                   return Column(
                     children: [
                       GestureDetector(
@@ -139,13 +149,13 @@ class OrderPlace extends StatelessWidget {
                                   orderC.orderList[index].orderStatus ==
                                           'CANCELED'
                                       ? Text(
-                                          'Cancel date ${orderC.orderList[index].cancelDate.toString().substring(8, 10)}/${orderC.orderList[index].cancelDate.toString().substring(6, 7)}/${orderC.orderList[index].cancelDate.toString().substring(0, 4)}',
+                                          'Cancel date ${orderC.orderList[index].cancelDate.toString().substring(8, 10)}/${orderC.selectmonthC}/${orderC.orderList[index].cancelDate.toString().substring(0, 4)}',
                                           style: const TextStyle(
                                               color: Colors.black54,
                                               fontSize: 15),
                                         )
                                       : Text(
-                                          'Delivery date ${orderC.orderList[index].deliveryDate.day}/${orderC.orderList[index].deliveryDate.month}/${orderC.orderList[index].deliveryDate.year}',
+                                          'Delivery date ${orderC.orderList[index].deliveryDate.day}/${orderC.selectmonth}/${orderC.orderList[index].deliveryDate.year}',
                                           style: const TextStyle(
                                               color: Colors.black54,
                                               fontSize: 15),

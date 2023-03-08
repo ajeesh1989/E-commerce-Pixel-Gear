@@ -157,7 +157,7 @@ class OrderDetails extends StatelessWidget {
                           ProductScreen(
                             height: height,
                             width: width,
-                            productid: productC.productList[index].id,
+                            productid: model.products[0].product.id,
                           ),
                         );
                       },

@@ -31,4 +31,62 @@ class AllOrderController extends GetxController {
       }
     });
   }
+
+  String selectmonth = 'January';
+  void monthDelivery(int month) {
+    if (month == 1) {
+      selectmonth = 'January';
+    } else if (month == 2) {
+      selectmonth = 'February';
+    } else if (month == 3) {
+      selectmonth = 'March';
+    } else if (month == 4) {
+      selectmonth = 'April';
+    } else if (month == 5) {
+      selectmonth = 'May';
+    } else if (month == 6) {
+      selectmonth = 'June';
+    } else if (month == 7) {
+      selectmonth = 'July';
+    } else if (month == 8) {
+      selectmonth = 'August';
+    } else if (month == 9) {
+      selectmonth = 'September';
+    } else if (month == 10) {
+      selectmonth = 'October';
+    } else if (month == 11) {
+      selectmonth = 'November';
+    } else if (month == 12) {
+      selectmonth = 'December';
+    }
+  }
+
+  String selectmonthC = 'January';
+  void monthCancel(int month) {
+    if (month == 1) {
+      selectmonthC = 'January';
+    } else if (month == 2) {
+      selectmonthC = 'February';
+    } else if (month == 3) {
+      selectmonthC = 'March';
+    } else if (month == 4) {
+      selectmonthC = 'April';
+    } else if (month == 5) {
+      selectmonthC = 'May';
+    } else if (month == 6) {
+      selectmonthC = 'June';
+    } else if (month == 7) {
+      selectmonthC = 'July';
+    } else if (month == 8) {
+      selectmonthC = 'August';
+    } else if (month == 9) {
+      selectmonthC = 'September';
+    } else if (month == 10) {
+      selectmonthC = 'October';
+    } else if (month == 11) {
+      selectmonthC = 'November';
+    } else if (month == 12) {
+      selectmonthC = 'December';
+    }
+  }
 }
